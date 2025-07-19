@@ -575,15 +575,19 @@
             </div>
         </header>
 
-        <div class="testimonials">
+                <div class="testimonials">
             <h3>💬 What Students Say</h3>
             <div class="testimonial">
-                <div class="testimonial-text">"StudySparkAI helped me understand calculus in just one week! The flashcards are amazing."</div>
+                <div class="testimonial-text">"I never knew calculus was literally rocket science until StudySparkAI showed me how SpaceX uses it! Now I'm obsessed with math."</div>
                 <div class="testimonial-author">- Sarah M., Grade 12</div>
             </div>
             <div class="testimonial">
-                <div class="testimonial-text">"Finally passed my algebra test thanks to the AI study plan. Worth every penny!"</div>
+                <div class="testimonial-text">"Finally understand why I need to learn this stuff - algebra is everywhere from Netflix to NASA!"</div>
                 <div class="testimonial-author">- Marcus R., Grade 10</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">"The real-world examples made trigonometry click for me. GPS, music, animations - it's all connected!"</div>
+                <div class="testimonial-author">- Emily L., Grade 11</div>
             </div>
         </div>
 
@@ -761,6 +765,64 @@ Day 3: Watch Khan Academy video (20 min)
         let quizAnswers = [];
         let reviewedCards = new Set();
         let isDarkMode = false;
+
+        // Real-world relevance stories for each topic
+        const realWorldStories = {
+            'algebra': {
+                hook: "🎢 The same algebra you're learning designs roller coasters that thrill millions!",
+                stories: [
+                    "Engineers use quadratic equations to design the perfect parabolic loops in roller coasters - too steep and riders get hurt, too gentle and it's boring!",
+                    "Netflix uses linear equations to predict which shows you'll binge-watch next based on your viewing patterns.",
+                    "NASA scientists used algebra to calculate the exact trajectory needed to land rovers on Mars - one wrong equation and billions of dollars crash into space!",
+                    "Spotify's algorithm uses algebraic formulas to create your Discover Weekly playlist by analyzing millions of listening patterns."
+                ]
+            },
+            'geometry': {
+                hook: "🏗️ Every building, bridge, and smartphone screen exists because of the geometry you're studying!",
+                stories: [
+                    "The Golden Gate Bridge uses triangle geometry principles to distribute weight - without these calculations, it would collapse!",
+                    "Your iPhone screen uses precise geometric ratios to make apps look perfect at any size - designers call this 'responsive geometry.'",
+                    "Architects use the Pythagorean theorem to ensure buildings don't fall down - every corner must be perfectly square or the structure fails.",
+                    "Video game designers use 3D geometry to create realistic worlds in games like Fortnite and Minecraft."
+                ]
+            },
+            'trigonometry': {
+                hook: "📡 Every time you use GPS, you're using the same trig functions you're learning right now!",
+                stories: [
+                    "Your phone's GPS uses trigonometry to triangulate your exact location from satellite signals - without sin, cos, and tan, Google Maps couldn't exist!",
+                    "Sound engineers use sine waves (trigonometry) to create the perfect acoustics in concert halls and recording studios.",
+                    "Pilots use trigonometry to calculate flight paths, ensuring your plane lands safely at the right runway.",
+                    "Animators at Pixar use trigonometric functions to create realistic water, fire, and hair movement in movies like Moana and Frozen."
+                ]
+            },
+            'calculus': {
+                hook: "🚀 The calculus you're learning is literally rocket science - it's what gets astronauts to space!",
+                stories: [
+                    "SpaceX uses calculus to calculate the exact fuel needed for rockets to escape Earth's gravity and reach the International Space Station.",
+                    "Medical devices like MRI machines use calculus to convert radio waves into detailed images of your brain and organs.",
+                    "Financial traders use calculus to predict stock market trends and make split-second trading decisions worth millions.",
+                    "Tesla's self-driving cars use calculus to calculate optimal braking distances and steering angles to avoid accidents."
+                ]
+            },
+            'statistics': {
+                hook: "📊 Every major decision in the world - from your favorite TV shows to life-saving medicines - depends on statistics!",
+                stories: [
+                    "Pharmaceutical companies use statistics to prove new medicines are safe and effective before they can save lives - literally every drug you've ever taken passed statistical tests.",
+                    "Netflix decides which shows to make based on statistical analysis of millions of viewing habits - your next favorite series exists because of statistics!",
+                    "Sports teams use statistics to draft players and make game-time decisions - Moneyball revolutionized baseball using statistical analysis.",
+                    "Climate scientists use statistical models to predict weather patterns and understand climate change impacts on our planet."
+                ]
+            },
+            'precalculus': {
+                hook: "🌐 Pre-calculus is the foundation that powers the internet, AI, and every smart device you use!",
+                stories: [
+                    "Search engines like Google use logarithmic functions to rank billions of web pages and show you the most relevant results in milliseconds.",
+                    "AI systems like ChatGPT use exponential functions to process language and generate human-like responses.",
+                    "Social media algorithms use composite functions to determine which posts appear in your feed based on your interests and behavior.",
+                    "Cryptocurrency mining uses mathematical sequences and functions to secure blockchain networks and create digital money."
+                ]
+            }
+        };
 
         // Enhanced sample data with more topics
         const samplePlans = {
@@ -1217,10 +1279,26 @@ Day 3: Watch Khan Academy video (20 min)
 
         function generatePlanDisplay(planData, topic, hours, style) {
             const container = document.getElementById('studyPlanResults');
+            const stories = realWorldStories[topic] || realWorldStories['algebra'];
             
             let html = `
                 <h3>📅 Your Personalized Study Plan: ${topic.charAt(0).toUpperCase() + topic.slice(1)}</h3>
                 <p><strong>Weekly Time:</strong> ${hours} hours | <strong>Learning Style:</strong> ${style} | <strong>Difficulty:</strong> Adaptive</p>
+                
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <h4>🌟 Why This Matters in Real Life</h4>
+                    <p style="font-size: 1.1em; margin: 10px 0;"><strong>${stories.hook}</strong></p>
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px; margin: 10px 0;">
+                        <p><strong>💡 Did you know?</strong> ${stories.stories[Math.floor(Math.random() * stories.stories.length)]}</p>
+                    </div>
+                    <details style="margin-top: 15px;">
+                        <summary style="cursor: pointer; font-weight: bold;">🔍 See more amazing applications...</summary>
+                        <div style="margin-top: 10px;">
+                            ${stories.stories.map(story => `<p style="margin: 8px 0; padding-left: 15px; border-left: 2px solid rgba(255,255,255,0.3);">• ${story}</p>`).join('')}
+                        </div>
+                    </details>
+                </div>
+
                 <div class="study-plan">
             `;
             
