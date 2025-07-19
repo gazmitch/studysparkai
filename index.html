@@ -559,35 +559,19 @@
             <h1>📚 StudySparkAI</h1>
             <p>Master Math with AI-Powered Study Plans</p>
             
-            <div class="stats">
-                <div class="stat">
-                    <span class="stat-number counter" data-target="12847">0</span>
-                    <span class="stat-label">Students Helped</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number counter" data-target="94">0</span>
-                    <span class="stat-label">% Success Rate</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-number counter" data-target="247">0</span>
-                    <span class="stat-label">Plans This Week</span>
-                </div>
+            <div class="beta-notice" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+                <h3 style="color: #ffd700; margin-bottom: 8px;">🚧 BETA VERSION</h3>
+                <p style="opacity: 0.9;">We're building the future of math study plans. Help us test and improve!</p>
             </div>
         </header>
 
-                <div class="testimonials">
-            <h3>💬 What Students Say</h3>
-            <div class="testimonial">
-                <div class="testimonial-text">"I never knew calculus was literally rocket science until StudySparkAI showed me how SpaceX uses it! Now I'm obsessed with math."</div>
-                <div class="testimonial-author">- Sarah M., Grade 12</div>
-            </div>
-            <div class="testimonial">
-                <div class="testimonial-text">"Finally understand why I need to learn this stuff - algebra is everywhere from Netflix to NASA!"</div>
-                <div class="testimonial-author">- Marcus R., Grade 10</div>
-            </div>
-            <div class="testimonial">
-                <div class="testimonial-text">"The real-world examples made trigonometry click for me. GPS, music, animations - it's all connected!"</div>
-                <div class="testimonial-author">- Emily L., Grade 11</div>
+                <div class="feedback-section" style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin: 20px 0; color: white;">
+            <h3>💭 We'd Love Your Feedback!</h3>
+            <p style="margin: 10px 0;">This is a beta version - we're actively building features based on student feedback. What would make this more helpful for your math studies?</p>
+            <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
+                <button onclick="alert('Thanks! We\'re tracking this feedback.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">More topics</button>
+                <button onclick="alert('Great suggestion! Adding to our roadmap.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">Video explanations</button>
+                <button onclick="alert('Noted! We\'re working on this.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">Better quizzes</button>
             </div>
         </div>
 
@@ -675,16 +659,17 @@ Day 3: Watch Khan Academy video (20 min)
         </div>
 
         <div class="premium-preview">
-            <h3>🌟 Upgrade to Premium - $2/month</h3>
+            <h3>🌟 Coming Soon: Premium Features</h3>
+            <p style="margin-bottom: 15px;">Based on your feedback, we're planning to add:</p>
             <div class="premium-features">
-                <div class="feature">✅ Unlimited study plans</div>
-                <div class="feature">✅ Advanced AI tutor chat</div>
-                <div class="feature">✅ Progress tracking & analytics</div>
-                <div class="feature">✅ Custom flashcard creation</div>
-                <div class="feature">✅ Video explanations for each topic</div>
-                <div class="feature">✅ Parent progress reports</div>
+                <div class="feature">🎯 Unlimited study plans (currently: 1/week)</div>
+                <div class="feature">🤖 AI mistake analysis and explanations</div>
+                <div class="feature">📊 Progress tracking & analytics</div>
+                <div class="feature">🎥 Personalized video explanations</div>
+                <div class="feature">📱 Mobile app with offline access</div>
+                <div class="feature">👨‍👩‍👧‍👦 Parent progress reports</div>
             </div>
-            <button class="btn btn-premium">🚀 Start Free 7-Day Trial</button>
+            <button class="btn btn-premium" onclick="alert('Thanks for your interest! We\'ll email you when premium launches.')">📧 Get Notified When Ready</button>
         </div>
 
         <!-- Results Section -->
@@ -754,8 +739,8 @@ Day 3: Watch Khan Academy video (20 min)
         </div>
 
         <footer class="footer">
-            <p>Free Plan: 1 study plan per week | Premium: $2/month for unlimited access</p>
-            <p>Join 12,847+ students mastering math with AI ✨</p>
+            <p>🚧 Beta Version - Free while we build and improve based on your feedback</p>
+            <p>Help us create the perfect AI study companion for high school math ✨</p>
         </footer>
     </div>
 
@@ -1168,24 +1153,9 @@ Day 3: Watch Khan Academy video (20 min)
             ]
         };
 
-        // Counter animation
+        // Counter animation - removed for beta
         function animateCounters() {
-            const counters = document.querySelectorAll('.counter');
-            counters.forEach(counter => {
-                const target = parseInt(counter.dataset.target);
-                const increment = target / 50;
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += increment;
-                    if (current >= target) {
-                        counter.textContent = target.toLocaleString();
-                        clearInterval(timer);
-                    } else {
-                        counter.textContent = Math.floor(current).toLocaleString();
-                    }
-                }, 40);
-            });
+            // Disabled for beta version
         }
 
         // Start counter animation when page loads
