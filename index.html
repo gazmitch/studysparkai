@@ -11,6 +11,37 @@
             box-sizing: border-box;
         }
 
+        .main-heading {
+            font-size: 2.5rem;
+            margin-bottom: 0.5em;
+            text-align: center;
+        }
+
+        .sub-heading {
+            font-size: 1.25rem;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            font-size: 1.1rem;
+            background-color: #ffd700;
+            color: #333;
+            text-decoration: none;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+            transition: transform 0.2s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -614,8 +645,17 @@
                 padding: 10px;
             }
             
-            .header h1 {
+            .main-heading {
                 font-size: 2rem;
+            }
+            
+            .sub-heading {
+                font-size: 1.1rem;
+            }
+            
+            .cta-button {
+                font-size: 1rem;
+                padding: 0.75em 1.25em;
             }
             
             .tab-content {
@@ -675,8 +715,9 @@
             font-size: 14px;
         }
 
-        .counter {
-            animation: countUp 2s ease-out;
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
         }
 
         @keyframes countUp {
@@ -690,12 +731,15 @@
 
     <div class="container">
         <header class="header">
-            <h1>📚 StudySparkAI</h1>
-            <p>Get instant, clear explanations when you're stuck on math - no fluff, just help that actually makes sense.</p>
+            <h1 class="main-heading">Stuck on a Maths Topic?</h1>
+            <p class="sub-heading">Get a clear, no-fluff explanation in seconds.</p>
+            <p class="sub-heading">Perfect for GCSE, A-Level, and IB students who just need it to <em>make sense</em>.</p>
             
-            <div class="beta-notice" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+            <a href="#generate-section" class="cta-button">Get Instant Help</a>
+            
+            <div class="beta-notice" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; text-align: center; margin: 25px 0 20px 0;">
                 <h3 style="color: #ffd700; margin-bottom: 8px;">🚧 BETA VERSION</h3>
-                <p style="opacity: 0.9;">We're building the future of math study plans. Help us test and improve!</p>
+                <p style="opacity: 0.9;">We're building the future of math help. Test it and help us improve!</p>
             </div>
         </header>
 
@@ -709,7 +753,7 @@
             </div>
         </div>
 
-        <div class="main-card">
+        <div class="main-card" id="generate-section">
             <nav class="tab-nav">
                 <button class="tab-btn active" onclick="switchTab('generate')">Get Help</button>
                 <button class="tab-btn" onclick="switchTab('manual')">Ask Question</button>
@@ -747,7 +791,7 @@
                         <input type="text" id="specific" placeholder="e.g., 'I don't get when to use the quadratic formula' or 'Why do we factor?'">
                     </div>
 
-                    <button type="submit" class="btn">🚀 Get Instant Help</button>
+                    <button type="submit" class="btn" style="font-size: 1.2rem; padding: 16px 32px; margin-top: 10px;">🚀 Get Instant Help</button>
                 </form>
 
                 <div id="loading" class="loading">
@@ -793,33 +837,33 @@
         <div id="results" class="hidden">
             <div class="main-card">
                 <div class="tab-nav">
-                    <button class="tab-btn active" onclick="switchResultTab('plan')">Study Plan</button>
-                    <button class="tab-btn" onclick="switchResultTab('flashcards')">Flashcards <span class="premium-badge">PRO</span></button>
-                    <button class="tab-btn" onclick="switchResultTab('quiz')">Quiz <span class="premium-badge">PRO</span></button>
+                    <button class="tab-btn active" onclick="switchResultTab('plan')">Explanation</button>
+                    <button class="tab-btn" onclick="switchResultTab('flashcards')">Practice Cards</button>
+                    <button class="tab-btn" onclick="switchResultTab('quiz')">Quick Quiz</button>
                     <button class="tab-btn" onclick="switchResultTab('feedback')">Feedback</button>
                 </div>
 
-                <!-- Study Plan Results -->
+                <!-- Explanation Results -->
                 <div id="plan-tab" class="tab-content active">
                     <div id="studyPlanResults"></div>
                     <div class="action-buttons">
-                        <button onclick="sharePlan()" class="btn">📤 Share Plan</button>
-                        <button onclick="savePlan()" class="btn">💾 Save Plan</button>
-                        <button onclick="printPlan()" class="btn">🖨️ Print Plan</button>
+                        <button onclick="sharePlan()" class="btn">📤 Share This</button>
+                        <button onclick="savePlan()" class="btn">💾 Save Help</button>
+                        <button onclick="printPlan()" class="btn">🖨️ Print</button>
                     </div>
                 </div>
 
-                <!-- Flashcards Results -->
+                <!-- Practice Cards Results -->
                 <div id="flashcards-tab" class="tab-content">
-                    <h3>📚 Study Flashcards <span class="premium-badge">PREMIUM</span></h3>
-                    <p>Click any card to flip it and see the answer!</p>
+                    <h3>📚 Practice Cards</h3>
+                    <p>Reinforce your understanding with these interactive flashcards!</p>
                     
                     <div class="flashcard-progress">
                         <div class="progress-ring" id="progressRing">
                             <div class="progress-text" id="progressText">0%</div>
                         </div>
                         <div>
-                            <div style="font-weight: bold; color: #333;">Progress Tracking</div>
+                            <div style="font-weight: bold; color: #333;">Practice Progress</div>
                             <div id="cardProgress" style="color: #666;">0/10 cards reviewed</div>
                         </div>
                     </div>
@@ -1358,6 +1402,58 @@
             // Show results section
             document.getElementById('results').classList.remove('hidden');
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
+            
+            // Show feedback prompt after a delay
+            setTimeout(() => {
+                showFeedbackPrompt();
+            }, 3000);
+        }
+
+        function showFeedbackPrompt() {
+            const prompt = document.createElement('div');
+            prompt.style.cssText = `
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                background: #667eea;
+                color: white;
+                padding: 15px 20px;
+                border-radius: 12px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+                z-index: 1000;
+                max-width: 300px;
+                animation: slideIn 0.5s ease-out;
+            `;
+            prompt.innerHTML = `
+                <div style="margin-bottom: 10px; font-weight: bold;">💭 Was this helpful?</div>
+                <div style="margin-bottom: 15px; font-size: 14px;">What else would've made it easier?</div>
+                <div style="display: flex; gap: 5px; flex-wrap: wrap;">
+                    <button onclick="feedbackClick('step-by-step')" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; cursor: pointer;">More steps</button>
+                    <button onclick="feedbackClick('examples')" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; cursor: pointer;">More examples</button>
+                    <button onclick="feedbackClick('practice')" style="background: rgba(255,255,255,0.2); border: none; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; cursor: pointer;">More practice</button>
+                </div>
+                <button onclick="this.parentElement.remove()" style="position: absolute; top: 5px; right: 8px; background: none; border: none; color: white; cursor: pointer;">×</button>
+            `;
+            
+            // Add animation keyframe
+            if (!document.querySelector('#slideInAnimation')) {
+                const style = document.createElement('style');
+                style.id = 'slideInAnimation';
+                style.textContent = `
+                    @keyframes slideIn {
+                        from { transform: translateX(100%); opacity: 0; }
+                        to { transform: translateX(0); opacity: 1; }
+                    }
+                `;
+                document.head.appendChild(style);
+            }
+            
+            document.body.appendChild(prompt);
+        }
+
+        function feedbackClick(type) {
+            alert(`Thanks! "${type}" feedback noted - we're building this!`);
+            document.querySelector('[style*="position: fixed"]').remove();
         }
 
         function generateExplanationDisplay(topicData, topic, urgency, specific) {
