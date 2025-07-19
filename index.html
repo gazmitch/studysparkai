@@ -189,11 +189,12 @@
 
       output.innerHTML = plan;
 
-      if (topic.toLowerCase().includes("trig")) {
+      const topicLC = topic.toLowerCase();
+      if (topicLC.includes("trig") || topicLC.includes("trigonometry")) {
         videoFrame.src = "https://www.youtube.com/embed/8vG3sbM4PyQ";
-      } else if (topic.toLowerCase().includes("algebra")) {
+      } else if (topicLC.includes("algebra")) {
         videoFrame.src = "https://www.youtube.com/embed/NybHckSEQBI";
-      } else if (topic.toLowerCase().includes("calculus")) {
+      } else if (topicLC.includes("calculus")) {
         videoFrame.src = "https://www.youtube.com/embed/WUvTyaaNkzM";
       } else {
         videoFrame.src = "https://www.youtube.com/embed/NybHckSEQBI";
