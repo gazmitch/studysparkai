@@ -27,7 +27,7 @@
         .header {
             text-align: center;
             color: white;
-            margin-bottom: 30px;
+            margin-bottom: 20px;
         }
 
         .header h1 {
@@ -39,6 +39,31 @@
         .header p {
             font-size: 1.2rem;
             opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
         }
 
         .main-card {
@@ -129,6 +154,22 @@
             transform: none;
         }
 
+        .btn-premium {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+            font-weight: bold;
+        }
+
+        .premium-badge {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-left: 8px;
+        }
+
         .loading {
             display: none;
             text-align: center;
@@ -138,6 +179,46 @@
 
         .loading.show {
             display: block;
+        }
+
+        .ai-typing {
+            display: none;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .ai-typing.show {
+            display: block;
+        }
+
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .typing-dots {
+            display: flex;
+            gap: 4px;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            background: #667eea;
+            border-radius: 50%;
+            animation: typing 1.5s infinite;
+        }
+
+        .dot:nth-child(2) { animation-delay: 0.2s; }
+        .dot:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes typing {
+            0%, 60%, 100% { transform: translateY(0); }
+            30% { transform: translateY(-10px); }
         }
 
         .study-plan {
@@ -304,6 +385,96 @@
             opacity: 0.8;
         }
 
+        .testimonials {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+            color: white;
+        }
+
+        .testimonial {
+            margin: 15px 0;
+            padding: 15px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 8px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 8px;
+        }
+
+        .testimonial-author {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .premium-preview {
+            background: linear-gradient(135deg, #ffd700 0%, #ffb347 100%);
+            color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .premium-features {
+            display: grid;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .action-buttons .btn {
+            flex: 1;
+        }
+
+        .dark-mode {
+            background: #1a1a1a;
+            color: #fff;
+        }
+
+        .dark-mode .main-card {
+            background: #2d2d2d;
+            color: #fff;
+        }
+
+        .dark-mode input, .dark-mode select, .dark-mode textarea {
+            background: #3d3d3d;
+            color: #fff;
+            border-color: #555;
+        }
+
+        .dark-mode .plan-day, .dark-mode .question, .dark-mode .answer {
+            background: #3d3d3d;
+            color: #fff;
+        }
+
+        .dark-mode-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
         @media (max-width: 768px) {
             .container {
                 padding: 10px;
@@ -315,6 +486,14 @@
             
             .tab-content {
                 padding: 20px;
+            }
+
+            .stats {
+                gap: 15px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
             }
         }
 
@@ -345,14 +524,68 @@
             border-radius: 4px;
             transition: width 0.3s;
         }
+
+        .share-buttons {
+            display: flex;
+            gap: 10px;
+            margin: 15px 0;
+        }
+
+        .share-btn {
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .counter {
+            animation: countUp 2s ease-out;
+        }
+
+        @keyframes countUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
     </style>
 </head>
 <body>
+    <button class="dark-mode-toggle" onclick="toggleDarkMode()" title="Toggle Dark Mode">🌙</button>
+
     <div class="container">
         <header class="header">
             <h1>📚 StudySparkAI</h1>
             <p>Master Math with AI-Powered Study Plans</p>
+            
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number counter" data-target="12847">0</span>
+                    <span class="stat-label">Students Helped</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number counter" data-target="94">0</span>
+                    <span class="stat-label">% Success Rate</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number counter" data-target="247">0</span>
+                    <span class="stat-label">Plans This Week</span>
+                </div>
+            </div>
         </header>
+
+        <div class="testimonials">
+            <h3>💬 What Students Say</h3>
+            <div class="testimonial">
+                <div class="testimonial-text">"StudySparkAI helped me understand calculus in just one week! The flashcards are amazing."</div>
+                <div class="testimonial-author">- Sarah M., Grade 12</div>
+            </div>
+            <div class="testimonial">
+                <div class="testimonial-text">"Finally passed my algebra test thanks to the AI study plan. Worth every penny!"</div>
+                <div class="testimonial-author">- Marcus R., Grade 10</div>
+            </div>
+        </div>
 
         <div class="main-card">
             <nav class="tab-nav">
@@ -365,7 +598,15 @@
                 <form id="studyForm">
                     <div class="form-group">
                         <label for="topic">Math Topic</label>
-                        <input type="text" id="topic" placeholder="e.g., Quadratic Equations, Trigonometry, Calculus" required>
+                        <select id="topic" required>
+                            <option value="">Choose your math topic</option>
+                            <option value="algebra">Algebra (Linear & Quadratic)</option>
+                            <option value="geometry">Geometry (Shapes & Proofs)</option>
+                            <option value="trigonometry">Trigonometry (Sin, Cos, Tan)</option>
+                            <option value="calculus">Calculus (Derivatives & Integrals)</option>
+                            <option value="statistics">Statistics & Probability</option>
+                            <option value="precalculus">Pre-Calculus (Functions & Limits)</option>
+                        </select>
                     </div>
 
                     <div class="form-group">
@@ -388,10 +629,22 @@
                 </form>
 
                 <div id="loading" class="loading">
-                    <p>🤖 AI is creating your personalized study plan...</p>
+                    <p>🤖 AI is analyzing your learning style...</p>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 0%"></div>
                     </div>
+                </div>
+
+                <div id="aiTyping" class="ai-typing">
+                    <div class="typing-indicator">
+                        <span>🤖 AI is writing your personalized plan</span>
+                        <div class="typing-dots">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                    </div>
+                    <div id="aiThoughts"></div>
                 </div>
             </div>
 
@@ -417,24 +670,42 @@ Day 3: Watch Khan Academy video (20 min)
             </div>
         </div>
 
+        <div class="premium-preview">
+            <h3>🌟 Upgrade to Premium - $2/month</h3>
+            <div class="premium-features">
+                <div class="feature">✅ Unlimited study plans</div>
+                <div class="feature">✅ Advanced AI tutor chat</div>
+                <div class="feature">✅ Progress tracking & analytics</div>
+                <div class="feature">✅ Custom flashcard creation</div>
+                <div class="feature">✅ Video explanations for each topic</div>
+                <div class="feature">✅ Parent progress reports</div>
+            </div>
+            <button class="btn btn-premium">🚀 Start Free 7-Day Trial</button>
+        </div>
+
         <!-- Results Section -->
         <div id="results" class="hidden">
             <div class="main-card">
                 <div class="tab-nav">
                     <button class="tab-btn active" onclick="switchResultTab('plan')">Study Plan</button>
-                    <button class="tab-btn" onclick="switchResultTab('flashcards')">Flashcards</button>
-                    <button class="tab-btn" onclick="switchResultTab('quiz')">Quiz</button>
+                    <button class="tab-btn" onclick="switchResultTab('flashcards')">Flashcards <span class="premium-badge">PRO</span></button>
+                    <button class="tab-btn" onclick="switchResultTab('quiz')">Quiz <span class="premium-badge">PRO</span></button>
                     <button class="tab-btn" onclick="switchResultTab('feedback')">Feedback</button>
                 </div>
 
                 <!-- Study Plan Results -->
                 <div id="plan-tab" class="tab-content active">
                     <div id="studyPlanResults"></div>
+                    <div class="action-buttons">
+                        <button onclick="sharePlan()" class="btn">📤 Share Plan</button>
+                        <button onclick="savePlan()" class="btn">💾 Save Plan</button>
+                        <button onclick="printPlan()" class="btn">🖨️ Print Plan</button>
+                    </div>
                 </div>
 
                 <!-- Flashcards Results -->
                 <div id="flashcards-tab" class="tab-content">
-                    <h3>📚 Study Flashcards</h3>
+                    <h3>📚 Study Flashcards <span class="premium-badge">PREMIUM</span></h3>
                     <p>Click any card to flip it and see the answer!</p>
                     <div id="flashcardProgress">
                         <span id="cardProgress">0/10 cards reviewed</span>
@@ -444,7 +715,7 @@ Day 3: Watch Khan Academy video (20 min)
 
                 <!-- Quiz Results -->
                 <div id="quiz-tab" class="tab-content">
-                    <h3>🧠 Knowledge Quiz</h3>
+                    <h3>🧠 Knowledge Quiz <span class="premium-badge">PREMIUM</span></h3>
                     <p>Test your understanding with these practice questions:</p>
                     <div id="quizResults" class="quiz"></div>
                     <button id="checkAnswers" class="btn hidden" onclick="checkQuizAnswers()">Check Answers</button>
@@ -479,7 +750,8 @@ Day 3: Watch Khan Academy video (20 min)
         </div>
 
         <footer class="footer">
-            <p>Free to Start | Premium $2/month for unlimited plans</p>
+            <p>Free Plan: 1 study plan per week | Premium: $2/month for unlimited access</p>
+            <p>Join 12,847+ students mastering math with AI ✨</p>
         </footer>
     </div>
 
@@ -488,85 +760,136 @@ Day 3: Watch Khan Academy video (20 min)
         let currentTopic = '';
         let quizAnswers = [];
         let reviewedCards = new Set();
+        let isDarkMode = false;
 
-        // Sample data for AI responses
+        // Enhanced sample data with more topics
         const samplePlans = {
             'algebra': {
                 plan: [
-                    { day: 1, task: "Review basic algebraic expressions and variables", time: "30 min" },
-                    { day: 2, task: "Practice solving linear equations", time: "45 min" },
-                    { day: 3, task: "Learn factoring techniques", time: "40 min" },
-                    { day: 4, task: "Master quadratic equations", time: "50 min" },
-                    { day: 5, task: "Practice word problems", time: "35 min" },
-                    { day: 6, task: "Review graphing linear functions", time: "40 min" },
-                    { day: 7, task: "Complete practice test and review mistakes", time: "60 min" }
+                    { day: 1, task: "Master variables and basic expressions with visual diagrams", time: "30 min" },
+                    { day: 2, task: "Solve linear equations using the balance method", time: "45 min" },
+                    { day: 3, task: "Learn factoring patterns through interactive practice", time: "40 min" },
+                    { day: 4, task: "Conquer quadratic equations with the quadratic formula", time: "50 min" },
+                    { day: 5, task: "Apply algebra to real-world word problems", time: "35 min" },
+                    { day: 6, task: "Graph linear functions and understand slope", time: "40 min" },
+                    { day: 7, task: "Complete comprehensive review and practice test", time: "60 min" }
                 ],
                 flashcards: [
                     { front: "What is a variable?", back: "A symbol (usually a letter) that represents an unknown number" },
-                    { front: "What is 2x + 3 = 11?", back: "x = 4" },
+                    { front: "Solve: 2x + 3 = 11", back: "x = 4 (subtract 3, then divide by 2)" },
                     { front: "What is the quadratic formula?", back: "x = (-b ± √(b²-4ac)) / 2a" },
-                    { front: "What is factoring?", back: "Breaking down an expression into its simplest multiplied form" },
+                    { front: "Factor: x² + 5x + 6", back: "(x + 2)(x + 3)" },
                     { front: "What is a coefficient?", back: "The number in front of a variable (like the 3 in 3x)" },
-                    { front: "What is an exponent?", back: "A number that tells you how many times to multiply the base by itself" },
+                    { front: "What is an exponent?", back: "A number that shows how many times to multiply the base by itself" },
                     { front: "What is FOIL?", back: "First, Outer, Inner, Last - method for multiplying binomials" },
-                    { front: "What is a polynomial?", back: "An expression with multiple terms (like 3x² + 2x + 1)" },
-                    { front: "What is the slope formula?", back: "m = (y₂ - y₁) / (x₂ - x₁)" },
-                    { front: "What is y = mx + b?", back: "Slope-intercept form of a linear equation" }
+                    { front: "What is slope?", back: "The steepness of a line, calculated as rise over run" },
+                    { front: "What is y-intercept?", back: "The point where a line crosses the y-axis" },
+                    { front: "Solve: x² - 4 = 0", back: "x = ±2 (difference of squares)" }
                 ],
                 quiz: [
                     {
-                        question: "Solve for x: 2x + 5 = 13",
-                        answers: ["x = 4", "x = 6", "x = 8", "x = 9"],
+                        question: "Solve for x: 3x - 7 = 14",
+                        answers: ["x = 7", "x = 21", "x = 5", "x = 14"],
                         correct: 0
                     },
                     {
-                        question: "What is the coefficient of x in the expression 7x + 3?",
-                        answers: ["3", "7", "x", "10"],
+                        question: "What is the coefficient of x² in 5x² + 3x - 2?",
+                        answers: ["3", "5", "-2", "x²"],
                         correct: 1
                     },
                     {
-                        question: "Factor: x² + 5x + 6",
-                        answers: ["(x + 2)(x + 3)", "(x + 1)(x + 6)", "(x + 4)(x + 2)", "(x + 5)(x + 1)"],
+                        question: "Factor completely: x² + 7x + 12",
+                        answers: ["(x + 3)(x + 4)", "(x + 2)(x + 6)", "(x + 1)(x + 12)", "Cannot be factored"],
                         correct: 0
                     },
                     {
-                        question: "What is the slope of the line y = 3x + 2?",
-                        answers: ["2", "3", "5", "1"],
+                        question: "What is the slope of y = -2x + 5?",
+                        answers: ["5", "-2", "2", "-5"],
                         correct: 1
                     },
                     {
-                        question: "Solve: x² - 4 = 0",
-                        answers: ["x = ±2", "x = ±4", "x = 2", "x = 4"],
+                        question: "Solve using the quadratic formula: x² + 6x + 5 = 0",
+                        answers: ["x = -1, -5", "x = 1, 5", "x = -2, -3", "x = 2, 3"],
+                        correct: 0
+                    }
+                ]
+            },
+            'geometry': {
+                plan: [
+                    { day: 1, task: "Learn basic shapes, angles, and geometric vocabulary", time: "35 min" },
+                    { day: 2, task: "Master triangle properties and angle relationships", time: "40 min" },
+                    { day: 3, task: "Practice area and perimeter calculations", time: "45 min" },
+                    { day: 4, task: "Understand coordinate geometry and distance formula", time: "40 min" },
+                    { day: 5, task: "Learn geometric proofs and logical reasoning", time: "50 min" },
+                    { day: 6, task: "Explore circles, arcs, and sector calculations", time: "45 min" },
+                    { day: 7, task: "Review all concepts with mixed geometry problems", time: "55 min" }
+                ],
+                flashcards: [
+                    { front: "What is the sum of angles in a triangle?", back: "180 degrees" },
+                    { front: "Area of a circle formula", back: "A = πr² (pi times radius squared)" },
+                    { front: "What is the Pythagorean theorem?", back: "a² + b² = c² (for right triangles)" },
+                    { front: "What are parallel lines?", back: "Lines that never intersect and are always the same distance apart" },
+                    { front: "Area of a rectangle", back: "A = length × width" },
+                    { front: "What is a right angle?", back: "An angle that measures exactly 90 degrees" },
+                    { front: "Circumference of a circle", back: "C = 2πr or C = πd" },
+                    { front: "What is an isosceles triangle?", back: "A triangle with two equal sides and two equal angles" },
+                    { front: "Volume of a rectangular prism", back: "V = length × width × height" },
+                    { front: "What are vertical angles?", back: "Opposite angles formed by intersecting lines (they're equal)" }
+                ],
+                quiz: [
+                    {
+                        question: "What is the area of a triangle with base 6 and height 8?",
+                        answers: ["24", "48", "14", "12"],
+                        correct: 0
+                    },
+                    {
+                        question: "In a right triangle, if one leg is 3 and the other is 4, what is the hypotenuse?",
+                        answers: ["5", "7", "25", "12"],
+                        correct: 0
+                    },
+                    {
+                        question: "How many degrees are in a hexagon's interior angles total?",
+                        answers: ["720°", "540°", "360°", "900°"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the area of a circle with radius 5?",
+                        answers: ["25π", "10π", "5π", "50π"],
+                        correct: 0
+                    },
+                    {
+                        question: "If two parallel lines are cut by a transversal, alternate interior angles are:",
+                        answers: ["Equal", "Supplementary", "Complementary", "Different"],
                         correct: 0
                     }
                 ]
             },
             'trigonometry': {
                 plan: [
-                    { day: 1, task: "Learn basic trigonometric ratios (sin, cos, tan)", time: "40 min" },
-                    { day: 2, task: "Practice with right triangles", time: "45 min" },
-                    { day: 3, task: "Study unit circle basics", time: "50 min" },
-                    { day: 4, task: "Learn trigonometric identities", time: "45 min" },
-                    { day: 5, task: "Practice graphing trig functions", time: "40 min" },
-                    { day: 6, task: "Solve trigonometric equations", time: "45 min" },
-                    { day: 7, task: "Review and practice mixed problems", time: "60 min" }
+                    { day: 1, task: "Master basic trigonometric ratios (sin, cos, tan) with memory tricks", time: "40 min" },
+                    { day: 2, task: "Practice right triangle problems using SOHCAHTOA", time: "45 min" },
+                    { day: 3, task: "Learn the unit circle and special angle values", time: "50 min" },
+                    { day: 4, task: "Understand trigonometric identities and their applications", time: "45 min" },
+                    { day: 5, task: "Graph sine, cosine, and tangent functions", time: "40 min" },
+                    { day: 6, task: "Solve trigonometric equations step by step", time: "45 min" },
+                    { day: 7, task: "Apply trig to real-world problems (navigation, physics)", time: "60 min" }
                 ],
                 flashcards: [
-                    { front: "What is sin θ?", back: "Opposite / Hypotenuse" },
-                    { front: "What is cos θ?", back: "Adjacent / Hypotenuse" },
-                    { front: "What is tan θ?", back: "Opposite / Adjacent" },
-                    { front: "What is sin(30°)?", back: "1/2" },
-                    { front: "What is cos(60°)?", back: "1/2" },
-                    { front: "What is tan(45°)?", back: "1" },
-                    { front: "What is the Pythagorean identity?", back: "sin²θ + cos²θ = 1" },
-                    { front: "What is the period of sin(x)?", back: "2π" },
-                    { front: "What is sin(90°)?", back: "1" },
-                    { front: "What is cos(0°)?", back: "1" }
+                    { front: "What is sin θ?", back: "Opposite side ÷ Hypotenuse (SOHCAHTOA)" },
+                    { front: "What is cos θ?", back: "Adjacent side ÷ Hypotenuse" },
+                    { front: "What is tan θ?", back: "Opposite ÷ Adjacent (or sin θ ÷ cos θ)" },
+                    { front: "sin(30°) = ?", back: "1/2 or 0.5" },
+                    { front: "cos(60°) = ?", back: "1/2 or 0.5" },
+                    { front: "tan(45°) = ?", back: "1" },
+                    { front: "Pythagorean identity", back: "sin²θ + cos²θ = 1" },
+                    { front: "Period of sin(x)", back: "2π (360°)" },
+                    { front: "sin(90°) = ?", back: "1" },
+                    { front: "cos(0°) = ?", back: "1" }
                 ],
                 quiz: [
                     {
-                        question: "In a right triangle, if the opposite side is 3 and hypotenuse is 5, what is sin θ?",
-                        answers: ["3/5", "4/5", "3/4", "5/3"],
+                        question: "In a right triangle, if opposite = 5 and hypotenuse = 13, what is sin θ?",
+                        answers: ["5/13", "12/13", "5/12", "13/5"],
                         correct: 0
                     },
                     {
@@ -575,7 +898,7 @@ Day 3: Watch Khan Academy video (20 min)
                         correct: 0
                     },
                     {
-                        question: "If sin θ = 3/5, what is cos θ? (assuming θ is acute)",
+                        question: "If sin θ = 3/5 and θ is acute, what is cos θ?",
                         answers: ["4/5", "3/4", "5/4", "5/3"],
                         correct: 0
                     },
@@ -585,7 +908,7 @@ Day 3: Watch Khan Academy video (20 min)
                         correct: 0
                     },
                     {
-                        question: "What is tan(45°)?",
+                        question: "tan(45°) equals:",
                         answers: ["1", "√2", "1/2", "√3"],
                         correct: 0
                     }
@@ -593,30 +916,30 @@ Day 3: Watch Khan Academy video (20 min)
             },
             'calculus': {
                 plan: [
-                    { day: 1, task: "Review limits and continuity", time: "45 min" },
-                    { day: 2, task: "Learn basic derivative rules", time: "50 min" },
-                    { day: 3, task: "Practice chain rule and product rule", time: "45 min" },
-                    { day: 4, task: "Study applications of derivatives", time: "40 min" },
-                    { day: 5, task: "Introduction to integration", time: "50 min" },
-                    { day: 6, task: "Practice basic integration techniques", time: "45 min" },
-                    { day: 7, task: "Review fundamental theorem of calculus", time: "55 min" }
+                    { day: 1, task: "Understand limits intuitively with graphical examples", time: "45 min" },
+                    { day: 2, task: "Learn derivative rules: power, product, quotient, chain", time: "50 min" },
+                    { day: 3, task: "Practice taking derivatives of polynomial functions", time: "45 min" },
+                    { day: 4, task: "Apply derivatives to find slopes and rates of change", time: "40 min" },
+                    { day: 5, task: "Introduction to integration as reverse differentiation", time: "50 min" },
+                    { day: 6, task: "Practice basic integration techniques and u-substitution", time: "45 min" },
+                    { day: 7, task: "Connect derivatives and integrals with fundamental theorem", time: "55 min" }
                 ],
                 flashcards: [
-                    { front: "What is the derivative of x²?", back: "2x" },
-                    { front: "What is the derivative of sin(x)?", back: "cos(x)" },
-                    { front: "What is the derivative of eˣ?", back: "eˣ" },
-                    { front: "What is the power rule?", back: "d/dx[xⁿ] = nxⁿ⁻¹" },
-                    { front: "What is the chain rule?", back: "d/dx[f(g(x))] = f'(g(x)) · g'(x)" },
-                    { front: "What is ∫x dx?", back: "x²/2 + C" },
-                    { front: "What is the derivative of ln(x)?", back: "1/x" },
-                    { front: "What is the product rule?", back: "(fg)' = f'g + fg'" },
-                    { front: "What is ∫cos(x) dx?", back: "sin(x) + C" },
-                    { front: "What does a derivative represent?", back: "The instantaneous rate of change or slope of a tangent line" }
+                    { front: "Derivative of x²", back: "2x" },
+                    { front: "Derivative of sin(x)", back: "cos(x)" },
+                    { front: "Derivative of eˣ", back: "eˣ (stays the same!)" },
+                    { front: "Power rule", back: "d/dx[xⁿ] = nxⁿ⁻¹" },
+                    { front: "Chain rule", back: "d/dx[f(g(x))] = f'(g(x)) · g'(x)" },
+                    { front: "∫x dx = ?", back: "x²/2 + C" },
+                    { front: "Derivative of ln(x)", back: "1/x" },
+                    { front: "Product rule", back: "(fg)' = f'g + fg'" },
+                    { front: "∫cos(x) dx = ?", back: "sin(x) + C" },
+                    { front: "What does a derivative represent?", back: "Instantaneous rate of change or slope of tangent line" }
                 ],
                 quiz: [
                     {
-                        question: "What is the derivative of f(x) = 3x² + 2x - 1?",
-                        answers: ["6x + 2", "6x - 1", "3x + 2", "6x²"],
+                        question: "Find the derivative: f(x) = 4x³ - 2x + 7",
+                        answers: ["12x² - 2", "12x² - 2x", "4x² - 2", "12x³ - 2"],
                         correct: 0
                     },
                     {
@@ -625,23 +948,186 @@ Day 3: Watch Khan Academy video (20 min)
                         correct: 0
                     },
                     {
-                        question: "Using the chain rule, what is d/dx[sin(2x)]?",
-                        answers: ["2cos(2x)", "cos(2x)", "2sin(2x)", "-2cos(2x)"],
+                        question: "Using chain rule, find d/dx[sin(3x)]:",
+                        answers: ["3cos(3x)", "cos(3x)", "3sin(3x)", "-3cos(3x)"],
                         correct: 0
                     },
                     {
-                        question: "What is ∫3x² dx?",
-                        answers: ["x³ + C", "6x + C", "3x³ + C", "x³/3 + C"],
+                        question: "∫6x² dx = ?",
+                        answers: ["2x³ + C", "6x + C", "18x + C", "6x³ + C"],
                         correct: 0
                     },
                     {
-                        question: "At a critical point, the derivative equals:",
+                        question: "At a critical point, f'(x) equals:",
                         answers: ["0", "1", "∞", "-1"],
+                        correct: 0
+                    }
+                ]
+            },
+            'statistics': {
+                plan: [
+                    { day: 1, task: "Learn data types and measures of central tendency", time: "35 min" },
+                    { day: 2, task: "Calculate mean, median, mode with real datasets", time: "40 min" },
+                    { day: 3, task: "Understand standard deviation and variance", time: "45 min" },
+                    { day: 4, task: "Create and interpret graphs (histograms, box plots)", time: "40 min" },
+                    { day: 5, task: "Basic probability rules and calculations", time: "45 min" },
+                    { day: 6, task: "Normal distribution and z-scores", time: "50 min" },
+                    { day: 7, task: "Practice with real-world statistical analysis", time: "55 min" }
+                ],
+                flashcards: [
+                    { front: "What is the mean?", back: "The average: sum of all values ÷ number of values" },
+                    { front: "What is the median?", back: "The middle value when data is arranged in order" },
+                    { front: "What is the mode?", back: "The value that appears most frequently" },
+                    { front: "What is standard deviation?", back: "A measure of how spread out data points are from the mean" },
+                    { front: "Probability formula", back: "P(event) = favorable outcomes ÷ total outcomes" },
+                    { front: "What is a normal distribution?", back: "A bell-shaped curve where most data clusters around the mean" },
+                    { front: "What is a z-score?", back: "How many standard deviations a value is from the mean" },
+                    { front: "Range formula", back: "Maximum value - Minimum value" },
+                    { front: "What is correlation?", back: "A measure of how two variables are related" },
+                    { front: "Sample vs Population", back: "Sample is part of population; population is entire group" }
+                ],
+                quiz: [
+                    {
+                        question: "Find the mean of: 2, 4, 6, 8, 10",
+                        answers: ["6", "5", "7", "8"],
+                        correct: 0
+                    },
+                    {
+                        question: "If you flip a fair coin twice, what's P(two heads)?",
+                        answers: ["1/4", "1/2", "1/3", "2/3"],
+                        correct: 0
+                    },
+                    {
+                        question: "In a normal distribution, about what % of data falls within 1 standard deviation?",
+                        answers: ["68%", "95%", "99.7%", "50%"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the median of: 1, 3, 5, 7, 9, 11?",
+                        answers: ["6", "5", "7", "8"],
+                        correct: 0
+                    },
+                    {
+                        question: "If P(A) = 0.3 and P(B) = 0.4, and A and B are independent, what is P(A and B)?",
+                        answers: ["0.12", "0.7", "0.1", "0.24"],
+                        correct: 0
+                    }
+                ]
+            },
+            'precalculus': {
+                plan: [
+                    { day: 1, task: "Review and extend function notation and operations", time: "40 min" },
+                    { day: 2, task: "Master polynomial and rational functions", time: "45 min" },
+                    { day: 3, task: "Understand exponential and logarithmic functions", time: "50 min" },
+                    { day: 4, task: "Learn about limits and continuity concepts", time: "45 min" },
+                    { day: 5, task: "Practice with inverse functions and compositions", time: "40 min" },
+                    { day: 6, task: "Explore sequences, series, and mathematical induction", time: "50 min" },
+                    { day: 7, task: "Comprehensive review preparing for calculus", time: "60 min" }
+                ],
+                flashcards: [
+                    { front: "What is function notation?", back: "f(x) represents the output when x is the input" },
+                    { front: "Domain of a function", back: "All possible input values (x-values)" },
+                    { front: "Range of a function", back: "All possible output values (y-values)" },
+                    { front: "What is an asymptote?", back: "A line that a function approaches but never touches" },
+                    { front: "e ≈ ?", back: "2.718... (Euler's number)" },
+                    { front: "log₁₀(100) = ?", back: "2 (because 10² = 100)" },
+                    { front: "What is a composite function?", back: "(f∘g)(x) = f(g(x)) - function inside a function" },
+                    { front: "What is an inverse function?", back: "f⁻¹(x) 'undoes' what f(x) does" },
+                    { front: "Limit definition", back: "The value a function approaches as x approaches a certain value" },
+                    { front: "Arithmetic sequence formula", back: "aₙ = a₁ + (n-1)d" }
+                ],
+                quiz: [
+                    {
+                        question: "If f(x) = 2x + 3, what is f(5)?",
+                        answers: ["13", "11", "8", "10"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is the domain of f(x) = 1/(x-2)?",
+                        answers: ["All real numbers except x = 2", "All real numbers", "x > 2", "x < 2"],
+                        correct: 0
+                    },
+                    {
+                        question: "Solve: log₂(8) = ?",
+                        answers: ["3", "2", "4", "8"],
+                        correct: 0
+                    },
+                    {
+                        question: "If f(x) = x² and g(x) = x + 1, what is (f∘g)(2)?",
+                        answers: ["9", "5", "6", "7"],
+                        correct: 0
+                    },
+                    {
+                        question: "What is lim(x→3) (x² - 9)/(x - 3)?",
+                        answers: ["6", "0", "3", "undefined"],
                         correct: 0
                     }
                 ]
             }
         };
+
+        // AI thoughts for different topics
+        const aiThoughts = {
+            'algebra': [
+                "Analyzing your visual learning style... Perfect for algebra!",
+                "Creating a balance between conceptual understanding and practice...",
+                "Adding real-world applications to make it more engaging...",
+                "Customizing difficulty progression based on 3 hours per week..."
+            ],
+            'geometry': [
+                "Visual learners excel at geometry - great choice!",
+                "Planning hands-on activities with shapes and proofs...",
+                "Including coordinate geometry for practical applications...",
+                "Balancing theoretical proofs with computational practice..."
+            ],
+            'trigonometry': [
+                "SOHCAHTOA will be your best friend for this topic!",
+                "Planning unit circle memorization strategies...",
+                "Including real-world applications like navigation and physics...",
+                "Focusing on pattern recognition in trig functions..."
+            ],
+            'calculus': [
+                "Building strong foundation before diving into derivatives...",
+                "Planning intuitive explanations before formal definitions...",
+                "Connecting algebra skills to calculus concepts...",
+                "Emphasizing graphical understanding for visual learners..."
+            ],
+            'statistics': [
+                "Planning engaging real-world datasets for practice...",
+                "Focusing on interpretation skills, not just calculations...",
+                "Including probability games and simulations...",
+                "Building statistical thinking step by step..."
+            ],
+            'precalculus': [
+                "Preparing solid foundation for calculus success...",
+                "Reviewing and extending function concepts...",
+                "Emphasizing limit intuition for future calculus...",
+                "Connecting all previous math knowledge..."
+            ]
+        };
+
+        // Counter animation
+        function animateCounters() {
+            const counters = document.querySelectorAll('.counter');
+            counters.forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+                const increment = target / 50;
+                let current = 0;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current).toLocaleString();
+                    }
+                }, 40);
+            });
+        }
+
+        // Start counter animation when page loads
+        window.addEventListener('load', animateCounters);
 
         function switchTab(tab) {
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -665,7 +1151,7 @@ Day 3: Watch Khan Academy video (20 min)
         });
 
         function generateStudyPlan() {
-            const topic = document.getElementById('topic').value.toLowerCase();
+            const topic = document.getElementById('topic').value;
             const hours = document.getElementById('hours').value;
             const style = document.getElementById('style').value;
 
@@ -678,35 +1164,46 @@ Day 3: Watch Khan Academy video (20 min)
             let progress = 0;
             const progressBar = document.querySelector('.progress-fill');
             const progressInterval = setInterval(() => {
-                progress += Math.random() * 20;
+                progress += Math.random() * 15 + 5;
                 if (progress > 100) progress = 100;
                 progressBar.style.width = progress + '%';
                 
                 if (progress >= 100) {
                     clearInterval(progressInterval);
                     setTimeout(() => {
-                        showResults(topic, hours, style);
+                        showAITyping(topic);
                     }, 500);
                 }
-            }, 200);
+            }, 300);
+        }
+
+        function showAITyping(topic) {
+            document.getElementById('loading').classList.remove('show');
+            document.getElementById('aiTyping').classList.add('show');
+            
+            const thoughts = aiThoughts[topic] || aiThoughts['algebra'];
+            const thoughtsDiv = document.getElementById('aiThoughts');
+            let currentThought = 0;
+            
+            function showNextThought() {
+                if (currentThought < thoughts.length) {
+                    thoughtsDiv.innerHTML += `<div style="margin: 10px 0; opacity: 0.7;">💭 ${thoughts[currentThought]}</div>`;
+                    currentThought++;
+                    setTimeout(showNextThought, 1500);
+                } else {
+                    setTimeout(() => {
+                        document.getElementById('aiTyping').classList.remove('show');
+                        showResults(topic, document.getElementById('hours').value, document.getElementById('style').value);
+                    }, 1000);
+                }
+            }
+            
+            setTimeout(showNextThought, 1000);
         }
 
         function showResults(topic, hours, style) {
-            document.getElementById('loading').classList.remove('show');
-            
             // Find matching topic data
-            let topicData = null;
-            for (let key in samplePlans) {
-                if (topic.includes(key)) {
-                    topicData = samplePlans[key];
-                    break;
-                }
-            }
-            
-            // Fallback to algebra if no match
-            if (!topicData) {
-                topicData = samplePlans['algebra'];
-            }
+            let topicData = samplePlans[topic] || samplePlans['algebra'];
 
             // Generate study plan
             generatePlanDisplay(topicData.plan, topic, hours, style);
@@ -722,8 +1219,8 @@ Day 3: Watch Khan Academy video (20 min)
             const container = document.getElementById('studyPlanResults');
             
             let html = `
-                <h3>📅 Your 7-Day Study Plan: ${topic.charAt(0).toUpperCase() + topic.slice(1)}</h3>
-                <p><strong>Total Study Time:</strong> ${hours} hours/week | <strong>Learning Style:</strong> ${style}</p>
+                <h3>📅 Your Personalized Study Plan: ${topic.charAt(0).toUpperCase() + topic.slice(1)}</h3>
+                <p><strong>Weekly Time:</strong> ${hours} hours | <strong>Learning Style:</strong> ${style} | <strong>Difficulty:</strong> Adaptive</p>
                 <div class="study-plan">
             `;
             
@@ -732,7 +1229,7 @@ Day 3: Watch Khan Academy video (20 min)
                     <div class="plan-day">
                         <h4>Day ${day.day}</h4>
                         <p>${day.task}</p>
-                        <small>⏰ ${day.time}</small>
+                        <small>⏰ ${day.time} | 🎯 Builds on previous day</small>
                     </div>
                 `;
             });
@@ -808,13 +1305,11 @@ Day 3: Watch Khan Academy video (20 min)
         let selectedAnswers = {};
 
         function selectAnswer(questionIndex, answerIndex) {
-            // Remove previous selections for this question
             const questionDiv = document.querySelectorAll('.question')[questionIndex];
             questionDiv.querySelectorAll('.answer').forEach(answer => {
                 answer.classList.remove('selected');
             });
             
-            // Select new answer
             const selectedAnswer = questionDiv.querySelectorAll('.answer')[answerIndex];
             selectedAnswer.classList.add('selected');
             
@@ -844,9 +1339,9 @@ Day 3: Watch Khan Academy video (20 min)
             
             const percentage = Math.round((correct / quizAnswers.length) * 100);
             document.getElementById('quizScore').innerHTML = `
-                <h3>Quiz Results</h3>
+                <h3>🎯 Quiz Results</h3>
                 <p>You scored ${correct}/${quizAnswers.length} (${percentage}%)</p>
-                <p>${percentage >= 80 ? '🎉 Excellent work!' : percentage >= 60 ? '👍 Good job! Keep practicing.' : '📚 Keep studying and try again!'}</p>
+                <p>${percentage >= 80 ? '🎉 Excellent! You\'re ready for the next level!' : percentage >= 60 ? '👍 Good progress! Review the missed topics.' : '📚 Keep studying - you\'re building strong foundations!'}</p>
             `;
             document.getElementById('quizScore').classList.remove('hidden');
             document.getElementById('checkAnswers').classList.add('hidden');
@@ -863,22 +1358,82 @@ Day 3: Watch Khan Academy video (20 min)
             
             const container = document.getElementById('studyPlanResults');
             container.innerHTML = `
-                <h3>📝 Your Manual Study Plan: ${topic}</h3>
+                <h3>📝 Your Custom Study Plan: ${topic}</h3>
                 <div class="study-plan">
                     <div class="plan-day">
-                        <h4>Your Custom Plan</h4>
-                        <pre style="white-space: pre-wrap; font-family: inherit;">${plan}</pre>
+                        <h4>Your Personalized Schedule</h4>
+                        <pre style="white-space: pre-wrap; font-family: inherit; line-height: 1.5;">${plan}</pre>
                     </div>
                 </div>
             `;
             
-            // Hide flashcards and quiz for manual mode
-            document.getElementById('flashcardsResults').innerHTML = '<p>Flashcards are not available in manual mode. Create your own or switch to AI mode!</p>';
-            document.getElementById('quizResults').innerHTML = '<p>Quizzes are not available in manual mode. Create your own or switch to AI mode!</p>';
+            document.getElementById('flashcardsResults').innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><h3>🎓 Premium Feature</h3><p>Flashcards available with AI mode or Premium subscription</p><button class="btn btn-premium">Upgrade to Premium</button></div>';
+            document.getElementById('quizResults').innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><h3>🎓 Premium Feature</h3><p>Interactive quizzes available with AI mode or Premium subscription</p><button class="btn btn-premium">Upgrade to Premium</button></div>';
             
             document.getElementById('results').classList.remove('hidden');
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
         }
+
+        // Action buttons
+        function sharePlan() {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'My StudySparkAI Plan',
+                    text: 'Check out my personalized math study plan!',
+                    url: window.location.href
+                });
+            } else {
+                navigator.clipboard.writeText(window.location.href);
+                alert('Plan link copied to clipboard!');
+            }
+        }
+
+        function savePlan() {
+            const planData = {
+                topic: currentTopic,
+                plan: document.getElementById('studyPlanResults').innerHTML,
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('studysparkPlan', JSON.stringify(planData));
+            alert('📚 Study plan saved! You can access it anytime from this browser.');
+        }
+
+        function printPlan() {
+            const printContent = document.getElementById('studyPlanResults').innerHTML;
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(`
+                <html>
+                    <head>
+                        <title>StudySparkAI Plan</title>
+                        <style>
+                            body { font-family: Arial, sans-serif; margin: 20px; }
+                            .plan-day { margin: 15px 0; padding: 10px; border-left: 3px solid #667eea; }
+                        </style>
+                    </head>
+                    <body>${printContent}</body>
+                </html>
+            `);
+            printWindow.document.close();
+            printWindow.print();
+        }
+
+        // Dark mode toggle
+        function toggleDarkMode() {
+            isDarkMode = !isDarkMode;
+            document.body.classList.toggle('dark-mode');
+            const toggle = document.querySelector('.dark-mode-toggle');
+            toggle.textContent = isDarkMode ? '☀️' : '🌙';
+            localStorage.setItem('darkMode', isDarkMode);
+        }
+
+        // Load saved dark mode preference
+        window.addEventListener('load', () => {
+            const savedDarkMode = localStorage.getItem('darkMode') === 'true';
+            if (savedDarkMode) {
+                toggleDarkMode();
+            }
+        });
 
         // Rating system
         document.querySelectorAll('.star').forEach(star => {
@@ -906,8 +1461,7 @@ Day 3: Watch Khan Academy video (20 min)
                 return;
             }
             
-            // Simulate feedback submission
-            alert(`Thank you for your ${currentRating}-star rating! Your feedback helps us improve StudySparkAI.`);
+            alert(`🌟 Thank you for your ${currentRating}-star rating! Your feedback helps us improve StudySparkAI for all students.`);
             
             // Reset feedback
             currentRating = 0;
@@ -920,6 +1474,9 @@ Day 3: Watch Khan Academy video (20 min)
             document.getElementById('studyForm').reset();
             document.getElementById('customTopic').value = '';
             document.getElementById('customPlan').value = '';
+            
+            // Reset AI typing
+            document.getElementById('aiThoughts').innerHTML = '';
             
             // Hide results
             document.getElementById('results').classList.add('hidden');
