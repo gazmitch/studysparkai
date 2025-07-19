@@ -5,39 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>StudySparkAI</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      background-color: #e0f7fa;
+      background: linear-gradient(to bottom right, #e0f7fa, #ffffff);
       font-family: 'Roboto', sans-serif;
       margin: 0;
       padding: 0;
     }
     .container {
-      max-width: 600px;
-      margin: 0 auto;
-      padding: 20px;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
     }
     h1, h2 {
       text-align: center;
+      color: #333;
     }
     input, select, button {
       width: 100%;
-      padding: 10px;
+      padding: 12px;
       margin: 10px 0;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
+      font-size: 1rem;
     }
     button {
-      background-color: #007BFF;
+      background: linear-gradient(to right, #007BFF, #00B4D8);
       color: white;
-      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    button:hover {
+      background: linear-gradient(to right, #0056b3, #0096c7);
     }
     .dashboard {
-      background: #ffffff;
+      background: #f9f9f9;
       padding: 20px;
       margin-top: 30px;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
     }
     .progress {
       background: #28A745;
@@ -45,41 +55,58 @@
       text-align: center;
       height: 25px;
       line-height: 25px;
-      border-radius: 5px;
-      margin-bottom: 10px;
+      border-radius: 6px;
+      margin-bottom: 20px;
+      font-weight: bold;
     }
     .quick-win button {
       background: #FF5722;
       width: auto;
+      padding: 10px 20px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 6px;
     }
     .chat input {
-      width: 75%;
+      width: 72%;
       display: inline-block;
+      border-radius: 6px;
     }
     .chat button {
-      width: 20%;
+      width: 25%;
       display: inline-block;
+      margin-left: 3%;
     }
     ul.tasks li {
-      margin: 5px 0;
+      margin: 8px 0;
+      list-style: none;
+      padding: 8px 10px;
+      background-color: #e9f5ee;
+      border-radius: 6px;
+      font-size: 0.95rem;
     }
-    .flashcards, .quiz {
-      margin-top: 20px;
+    .chat-output {
+      background-color: #eef5ff;
+      padding: 10px;
+      border-radius: 6px;
+      margin-top: 10px;
+      font-style: italic;
+      min-height: 40px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>StudySparkAI - Master Math with AI</h1>
-    <h2>Start Your Study Plan</h2>
-    <input type="text" placeholder="e.g., Algebra">
-    <input type="text" placeholder="e.g., 2">
+    <h1><i class="fas fa-calculator"></i> StudySparkAI</h1>
+    <h2>Master Math with AI</h2>
+    <input type="text" placeholder="Enter a topic e.g., Algebra">
+    <input type="text" placeholder="Study hours per week e.g., 2">
     <select>
-      <option>Visual</option>
-      <option>Auditory</option>
-      <option>Kinesthetic</option>
+      <option>Learning Style: Visual</option>
+      <option>Learning Style: Auditory</option>
+      <option>Learning Style: Kinesthetic</option>
     </select>
-    <input type="text" placeholder="e.g., Alex">
+    <input type="text" placeholder="Your Name e.g., Alex">
     <button>Generate Study Plan</button>
 
     <div class="dashboard">
@@ -90,7 +117,7 @@
         <input id="chatInput" placeholder="Ask a math question...">
         <button onclick="chatResponse()">Send</button>
       </div>
-      <div id="chatOutput" style="margin-top:10px; font-style: italic;"></div>
+      <div id="chatOutput" class="chat-output"></div>
       <ul class="tasks">
         <li>✅ Day 1: Watch Video <input type="checkbox"></li>
         <li>📘 Day 2: Practice Problems <input type="checkbox"></li>
