@@ -137,7 +137,7 @@
 
     form.onsubmit = e => {
       e.preventDefault();
-      const topic = document.getElementById('topic').value;
+      const topic = document.getElementById('topic').value.trim().toLowerCase();
       const hours = document.getElementById('hours').value;
       const style = document.getElementById('style').value;
 
@@ -151,15 +151,22 @@
         Day 7: Summary and self-test (30 min)
       `;
 
+      const flashcardTerms = [
+        { term: 'Variable', def: 'A symbol used to represent a number.' },
+        { term: 'Coefficient', def: 'A number that multiplies a variable.' },
+        { term: 'Expression', def: 'A math phrase without an equals sign.' },
+        { term: 'Equation', def: 'A math statement that includes an equals sign.' },
+        { term: 'Factor', def: 'A number that divides another exactly.' }
+      ];
+
       flashcards.innerHTML = '';
-      for (let i = 1; i <= 5; i++) {
-        const term = `Term ${i}: Definition of ${topic}`;
-        const answer = `Answer ${i}: Explanation of ${topic}`;
+      for (let i = 0; i < flashcardTerms.length; i++) {
+        const { term, def } = flashcardTerms[i];
         const card = document.createElement('div');
         card.className = 'flashcard';
-        card.innerText = term;
+        card.innerText = `${term}`;
         card.onclick = () => {
-          card.innerText = card.innerText === term ? answer : term;
+          card.innerText = card.innerText === term ? def : term;
         };
         flashcards.appendChild(card);
       }
