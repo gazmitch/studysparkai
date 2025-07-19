@@ -38,6 +38,7 @@
       color: white;
       font-weight: bold;
       transition: background 0.3s;
+      border: none;
     }
     button:hover {
       background: linear-gradient(to right, #0056b3, #0096c7);
@@ -59,13 +60,12 @@
       margin-bottom: 20px;
       font-weight: bold;
     }
-    .quick-win button {
-      background: #FF5722;
-      width: auto;
-      padding: 10px 20px;
-      margin-bottom: 15px;
+    .quick-win iframe {
+      width: 100%;
+      height: 200px;
       border: none;
-      border-radius: 6px;
+      border-radius: 8px;
+      margin-bottom: 15px;
     }
     .chat input {
       width: 72%;
@@ -112,7 +112,9 @@
     <div class="dashboard">
       <h2>Your Math Journey</h2>
       <div class="progress" style="width: 70%;">70% Complete</div>
-      <div class="quick-win"><button onclick="alert('Watch: Solving Quadratics in 2 Minutes')">▶️ Quick Win: Quadratics</button></div>
+      <div class="quick-win">
+        <iframe src="https://www.youtube.com/embed/kO3OBGBrw1I" title="Quick Win: Solving Quadratics"></iframe>
+      </div>
       <div class="chat">
         <input id="chatInput" placeholder="Ask a math question...">
         <button onclick="chatResponse()">Send</button>
