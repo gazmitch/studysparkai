@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>StudySparkAI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9fafa;
+      color: #333;
+    }
+    header {
+      background-color: #1d3557;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 1rem;
+      max-width: 700px;
+      margin: auto;
+    }
+    h2 {
+      color: #1d3557;
+    }
+    input, select, textarea, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .card {
+      background: #e0f7fa;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 8px;
+    }
+    .flashcard {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 1rem;
+      margin: 10px 0;
+      border-radius: 5px;
+      cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+    .footer {
+      text-align: center;
+      font-size: 0.9rem;
+      padding: 1rem;
+      color: #777;
+    }
+    .hidden { display: none; }
+    ol {
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>StudySparkAI - Master Math with AI</h1>
+  </header>
+  <div class="container">
+    <h2>Start Your Study Plan</h2>
+    <form id="studyForm">
+      <label for="topic">Math Topic:</label>
+      <input type="text" id="topic" placeholder="e.g., Algebra" required>
+
+      <label for="hours">Study Hours/Week:</label>
+      <input type="number" id="hours" placeholder="e.g., 2" required>
+
+      <label for="style">Learning Style:</label>
+      <select id="style">
+        <option value="visual">Visual</option>
+        <option value="text">Text</option>
+        <option value="audio">Audio</option>
+      </select>
+
+      <label for="name">Your Name (optional):</label>
+      <input type="text" id="name" placeholder="e.g., Alex">
+
+      <button type="submit">Generate Study Plan</button>
+    </form>
+
+    <div id="output" class="hidden">
+      <h2>Your 7-Day Plan</h2>
+      <div class="card" id="plan"></div>
+
+      <h3>Flashcards</h3>
+      <div id="flashcards"></div>
+
+      <h3>Quiz</h3>
+      <div id="quiz"></div>
+
+      <h3>Manual Plan (Optional)</h3>
+      <textarea id="manualPlan" placeholder="Write your own plan here..."></textarea>
+
+      <h3>Feedback</h3>
+      <label for="rating">Rate this output:</label>
+      <select id="rating">
+        <option>⭐</option><option>⭐⭐</option><option>⭐⭐⭐</option><option>⭐⭐⭐⭐</option><option>⭐⭐⭐⭐⭐</option>
+      </select>
+      <textarea placeholder="Suggestions..."></textarea>
+
+      <button onclick="copyPlan()">Copy Plan</button>
+    </div>
+
+    <h2>Example Plan Preview</h2>
+    <div class="card">📘 Day 1 — Watch Algebra Video (30 min)</div>
+  </div>
+
+  <div class="footer">
+    Free to Start | Premium $2/month
+  </div>
+
+  <script>
+    const form = document.getElementById('studyForm');
+    const output = document.getElementById('output');
+    const plan = document.getElementById('plan');
+    const flashcards = document.getElementById('flashcards');
+    const quiz = document.getElementById('quiz');
+
+    form.onsubmit = e => {
+      e.preventDefault();
+      const topic = document.getElementById('topic').value.trim().toLowerCase();
+      const hours = document.getElementById('hours').value;
+      const style = document.getElementById('style').value;
+
+      plan.innerHTML = `
+        Day 1: Intro video on ${topic} (20 min)<br>
+        Day 2: Practice problems (30 min)<br>
+        Day 3: Visual explanation of key formula (25 min)<br>
+        Day 4: Flashcards review (20 min)<br>
+        Day 5: Short quiz (15 min)<br>
+        Day 6: Application exercises (30 min)<br>
+        Day 7: Summary and self-test (30 min)
+      `;
+
+      const flashcardTerms = [
+        { term: 'Variable', def: 'A symbol used to represent a number.' },
+        { term: 'Coefficient', def: 'A number that multiplies a variable.' },
+        { term: 'Expression', def: 'A math phrase without an equals sign.' },
+        { term: 'Equation', def: 'A math statement that includes an equals sign.' },
+        { term: 'Factor', def: 'A number that divides another exactly.' }
+      ];
+
+      flashcards.innerHTML = '';
+      for (let i = 0; i < flashcardTerms.length; i++) {
+        const { term, def } = flashcardTerms[i];
+        const card = document.createElement('div');
+        card.className = 'flashcard';
+        card.innerText = `${term}`;
+        card.onclick = () => {
+          card.innerText = card.innerText === term ? def : term;
+        };
+        flashcards.appendChild(card);
+      }
+
+      quiz.innerHTML = `
+        <ol>
+          <li>What is a key formula in ${topic}?<br><em>( ) Option A &nbsp; ( ) Option B &nbsp; ( ) Option C</em></li>
+          <li>Solve: basic ${topic} problem<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+          <li>What does '${topic}' help you do?<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+          <li>Choose the correct method:<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+          <li>Which step comes first?<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+        </ol>
+      `;
+
+      output.classList.remove('hidden');
+    };
+
+    function copyPlan() {
+      const text = document.getElementById('plan').innerText;
+      navigator.clipboard.writeText(text)
+        .then(() => alert('Plan copied to clipboard!'));
+    }
+  </script>
+</body>
+</html>
