@@ -32,6 +32,7 @@
       margin: 8px 0;
       border: 1px solid #ccc;
       border-radius: 5px;
+      box-sizing: border-box;
     }
     button {
       background-color: #2a9d8f;
@@ -49,9 +50,11 @@
       background: white;
       border: 1px solid #ddd;
       padding: 1rem;
-      margin: 5px 0;
+      margin: 10px 0;
       border-radius: 5px;
       cursor: pointer;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
     }
     .footer {
       text-align: center;
@@ -60,6 +63,12 @@
       color: #777;
     }
     .hidden { display: none; }
+    ol {
+      padding-left: 1.2rem;
+    }
+    li {
+      margin-bottom: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -70,10 +79,10 @@
     <h2>Start Your Study Plan</h2>
     <form id="studyForm">
       <label for="topic">Math Topic:</label>
-      <input type="text" id="topic" placeholder="e.g., Algebra">
+      <input type="text" id="topic" placeholder="e.g., Algebra" required>
 
       <label for="hours">Study Hours/Week:</label>
-      <input type="number" id="hours" placeholder="e.g., 2">
+      <input type="number" id="hours" placeholder="e.g., 2" required>
 
       <label for="style">Learning Style:</label>
       <select id="style">
@@ -144,13 +153,13 @@
 
       flashcards.innerHTML = '';
       for (let i = 1; i <= 5; i++) {
+        const term = `Term ${i}: Definition of ${topic}`;
+        const answer = `Answer ${i}: Explanation of ${topic}`;
         const card = document.createElement('div');
         card.className = 'flashcard';
-        card.innerText = `Term ${i}: Definition for ${topic}`;
+        card.innerText = term;
         card.onclick = () => {
-          card.innerText = card.innerText.includes('Definition')
-            ? `Answer ${i}: Explanation of ${topic}`
-            : `Term ${i}: Definition for ${topic}`;
+          card.innerText = card.innerText === term ? answer : term;
         };
         flashcards.appendChild(card);
       }
@@ -169,7 +178,8 @@
     };
 
     function copyPlan() {
-      navigator.clipboard.writeText(plan.innerText)
+      const text = document.getElementById('plan').innerText;
+      navigator.clipboard.writeText(text)
         .then(() => alert('Plan copied to clipboard!'));
     }
   </script>
