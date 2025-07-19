@@ -691,7 +691,7 @@
     <div class="container">
         <header class="header">
             <h1>📚 StudySparkAI</h1>
-            <p>Master Math with AI-Powered Study Plans</p>
+            <p>Get instant, clear explanations when you're stuck on math - no fluff, just help that actually makes sense.</p>
             
             <div class="beta-notice" style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
                 <h3 style="color: #ffd700; margin-bottom: 8px;">🚧 BETA VERSION</h3>
@@ -701,57 +701,57 @@
 
                 <div class="feedback-section" style="background: rgba(255,255,255,0.1); border-radius: 12px; padding: 20px; margin: 20px 0; color: white;">
             <h3>💭 We'd Love Your Feedback!</h3>
-            <p style="margin: 10px 0;">This is a beta version - we're actively building features based on student feedback. What would make this more helpful for your math studies?</p>
+            <p style="margin: 10px 0;">This is a beta version - we're actively building features based on what students actually need help with. What would make this more helpful when you're stuck?</p>
             <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                <button onclick="alert('Thanks! We\'re tracking this feedback.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">More topics</button>
+                <button onclick="alert('Thanks! We\'re tracking this feedback.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">Step-by-step solutions</button>
                 <button onclick="alert('Great suggestion! Adding to our roadmap.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">Video explanations</button>
-                <button onclick="alert('Noted! We\'re working on this.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">Better quizzes</button>
+                <button onclick="alert('Noted! We\'re working on this.')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid rgba(255,255,255,0.3); padding: 8px 16px; border-radius: 20px; cursor: pointer;">Practice problems</button>
             </div>
         </div>
 
         <div class="main-card">
             <nav class="tab-nav">
-                <button class="tab-btn active" onclick="switchTab('generate')">Generate Plan</button>
-                <button class="tab-btn" onclick="switchTab('manual')">Manual Mode</button>
+                <button class="tab-btn active" onclick="switchTab('generate')">Get Help</button>
+                <button class="tab-btn" onclick="switchTab('manual')">Ask Question</button>
             </nav>
 
             <!-- AI Generation Tab -->
             <div id="generate" class="tab-content active">
                 <form id="studyForm">
                     <div class="form-group">
-                        <label for="topic">Math Topic</label>
+                        <label for="topic">What math topic are you stuck on?</label>
                         <select id="topic" required>
-                            <option value="">Choose your math topic</option>
-                            <option value="algebra">Algebra (Linear & Quadratic)</option>
-                            <option value="geometry">Geometry (Shapes & Proofs)</option>
-                            <option value="trigonometry">Trigonometry (Sin, Cos, Tan)</option>
-                            <option value="calculus">Calculus (Derivatives & Integrals)</option>
+                            <option value="">Choose what you need help with</option>
+                            <option value="algebra">Algebra (equations, factoring, graphing)</option>
+                            <option value="geometry">Geometry (shapes, proofs, area/volume)</option>
+                            <option value="trigonometry">Trigonometry (sin, cos, tan, triangles)</option>
+                            <option value="calculus">Calculus (derivatives, limits, integrals)</option>
                             <option value="statistics">Statistics & Probability</option>
-                            <option value="precalculus">Pre-Calculus (Functions & Limits)</option>
+                            <option value="precalculus">Pre-Calculus (functions, logarithms)</option>
                         </select>
                     </div>
 
                     <div class="form-group">
-                        <label for="hours">Study Hours Per Week</label>
-                        <input type="number" id="hours" min="1" max="20" placeholder="e.g., 3" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="style">Learning Style</label>
-                        <select id="style" required>
-                            <option value="">Choose your learning style</option>
-                            <option value="visual">Visual (diagrams, videos, charts)</option>
-                            <option value="auditory">Auditory (lectures, discussions)</option>
-                            <option value="kinesthetic">Kinesthetic (hands-on, practice)</option>
-                            <option value="reading">Reading/Writing (text, notes)</option>
+                        <label for="urgency">How urgent is this?</label>
+                        <select id="urgency" required>
+                            <option value="">Select urgency level</option>
+                            <option value="test-tomorrow">Test tomorrow - HELP!</option>
+                            <option value="homework-due">Homework due soon</option>
+                            <option value="quiz-week">Quiz this week</option>
+                            <option value="just-confused">Just confused, no rush</option>
                         </select>
                     </div>
 
-                    <button type="submit" class="btn">✨ Generate AI Study Plan</button>
+                    <div class="form-group">
+                        <label for="specific">What specifically confuses you? (optional)</label>
+                        <input type="text" id="specific" placeholder="e.g., 'I don't get when to use the quadratic formula' or 'Why do we factor?'">
+                    </div>
+
+                    <button type="submit" class="btn">🚀 Get Instant Help</button>
                 </form>
 
                 <div id="loading" class="loading">
-                    <p>🤖 AI is analyzing your learning style...</p>
+                    <p>🤖 AI is creating your personalized explanation...</p>
                     <div class="progress-bar">
                         <div class="progress-fill" style="width: 0%"></div>
                     </div>
@@ -759,7 +759,7 @@
 
                 <div id="aiTyping" class="ai-typing">
                     <div class="typing-indicator">
-                        <span>🤖 AI is writing your personalized plan</span>
+                        <span>🤖 AI is breaking this down for you</span>
                         <div class="typing-dots">
                             <div class="dot"></div>
                             <div class="dot"></div>
@@ -772,23 +772,15 @@
 
             <!-- Manual Mode Tab -->
             <div id="manual" class="tab-content">
-                <h3>Create Your Own Study Plan</h3>
-                <p>Prefer to design your own study schedule? Enter your custom plan below:</p>
+                <h3>Ask Your Own Question</h3>
+                <p>Have a specific math problem? Describe it and get a clear explanation:</p>
                 
                 <div class="form-group">
-                    <label for="customTopic">Topic</label>
-                    <input type="text" id="customTopic" placeholder="Enter your math topic">
+                    <label for="customQuestion">Your Math Question</label>
+                    <textarea id="customQuestion" rows="4" placeholder="e.g., 'How do I solve 2x + 5 = 13?' or 'I don't understand why we flip the inequality sign when dividing by negative numbers'"></textarea>
                 </div>
 
-                <div class="form-group">
-                    <label for="customPlan">Your 7-Day Study Plan</label>
-                    <textarea id="customPlan" rows="8" placeholder="Day 1: Review basic concepts (30 min)
-Day 2: Practice problems 1-10 (45 min)
-Day 3: Watch Khan Academy video (20 min)
-..."></textarea>
-                </div>
-
-                <button onclick="createManualPlan()" class="btn">📝 Create Manual Plan</button>
+                <button onclick="createManualAnswer()" class="btn">💡 Get Answer</button>
             </div>
         </div>
 
@@ -1246,43 +1238,31 @@ Day 3: Watch Khan Academy video (20 min)
             }
         };
 
-        // AI thoughts for different topics
+        // AI thoughts for different urgency levels
         const aiThoughts = {
-            'algebra': [
-                "Analyzing your visual learning style... Perfect for algebra!",
-                "Creating a balance between conceptual understanding and practice...",
-                "Adding real-world applications to make it more engaging...",
-                "Customizing difficulty progression based on 3 hours per week..."
+            'test-tomorrow': [
+                "Detecting high urgency - focusing on key concepts only...",
+                "Prioritizing the most important points for quick understanding...",
+                "Creating focused explanation to help you fast...",
+                "Skipping extra details - just what you need to know..."
             ],
-            'geometry': [
-                "Visual learners excel at geometry - great choice!",
-                "Planning hands-on activities with shapes and proofs...",
-                "Including coordinate geometry for practical applications...",
-                "Balancing theoretical proofs with computational practice..."
+            'homework-due': [
+                "Understanding your homework deadline pressure...",
+                "Creating clear step-by-step explanation...",
+                "Focusing on practical application for your assignment...",
+                "Making sure you understand the 'why' behind the steps..."
             ],
-            'trigonometry': [
-                "SOHCAHTOA will be your best friend for this topic!",
-                "Planning unit circle memorization strategies...",
-                "Including real-world applications like navigation and physics...",
-                "Focusing on pattern recognition in trig functions..."
+            'quiz-week': [
+                "Preparing comprehensive explanation for your upcoming quiz...",
+                "Including practice elements to test understanding...",
+                "Building from basics to ensure solid foundation...",
+                "Adding memory tricks to help concepts stick..."
             ],
-            'calculus': [
-                "Building strong foundation before diving into derivatives...",
-                "Planning intuitive explanations before formal definitions...",
-                "Connecting algebra skills to calculus concepts...",
-                "Emphasizing graphical understanding for visual learners..."
-            ],
-            'statistics': [
-                "Planning engaging real-world datasets for practice...",
-                "Focusing on interpretation skills, not just calculations...",
-                "Including probability games and simulations...",
-                "Building statistical thinking step by step..."
-            ],
-            'precalculus': [
-                "Preparing solid foundation for calculus success...",
-                "Reviewing and extending function concepts...",
-                "Emphasizing limit intuition for future calculus...",
-                "Connecting all previous math knowledge..."
+            'just-confused': [
+                "Taking time to build understanding from the ground up...",
+                "Connecting this concept to things you already know...",
+                "Including real-world examples to make it click...",
+                "Making sure every step makes logical sense..."
             ]
         };
 
@@ -1317,8 +1297,8 @@ Day 3: Watch Khan Academy video (20 min)
 
         function generateStudyPlan() {
             const topic = document.getElementById('topic').value;
-            const hours = document.getElementById('hours').value;
-            const style = document.getElementById('style').value;
+            const urgency = document.getElementById('urgency').value;
+            const specific = document.getElementById('specific').value;
 
             currentTopic = topic;
 
@@ -1336,17 +1316,17 @@ Day 3: Watch Khan Academy video (20 min)
                 if (progress >= 100) {
                     clearInterval(progressInterval);
                     setTimeout(() => {
-                        showAITyping(topic);
+                        showAITyping(urgency);
                     }, 500);
                 }
             }, 300);
         }
 
-        function showAITyping(topic) {
+        function showAITyping(urgency) {
             document.getElementById('loading').classList.remove('show');
             document.getElementById('aiTyping').classList.add('show');
             
-            const thoughts = aiThoughts[topic] || aiThoughts['algebra'];
+            const thoughts = aiThoughts[urgency] || aiThoughts['just-confused'];
             const thoughtsDiv = document.getElementById('aiThoughts');
             let currentThought = 0;
             
@@ -1358,7 +1338,7 @@ Day 3: Watch Khan Academy video (20 min)
                 } else {
                     setTimeout(() => {
                         document.getElementById('aiTyping').classList.remove('show');
-                        showResults(topic, document.getElementById('hours').value, document.getElementById('style').value);
+                        showResults(document.getElementById('topic').value, urgency, document.getElementById('specific').value);
                     }, 1000);
                 }
             }
@@ -1366,12 +1346,12 @@ Day 3: Watch Khan Academy video (20 min)
             setTimeout(showNextThought, 1000);
         }
 
-        function showResults(topic, hours, style) {
+        function showResults(topic, urgency, specific) {
             // Find matching topic data
             let topicData = samplePlans[topic] || samplePlans['algebra'];
 
-            // Generate study plan
-            generatePlanDisplay(topicData.plan, topic, hours, style);
+            // Generate explanation based on urgency
+            generateExplanationDisplay(topicData, topic, urgency, specific);
             generateFlashcards(topicData.flashcards);
             generateQuiz(topicData.quiz);
             
@@ -1380,42 +1360,91 @@ Day 3: Watch Khan Academy video (20 min)
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function generatePlanDisplay(planData, topic, hours, style) {
+        function generateExplanationDisplay(topicData, topic, urgency, specific) {
             const container = document.getElementById('studyPlanResults');
             const stories = realWorldStories[topic] || realWorldStories['algebra'];
             
+            // Create urgency-based explanation
+            let urgencyMessage = "";
+            let actionItems = [];
+            
+            switch(urgency) {
+                case 'test-tomorrow':
+                    urgencyMessage = "🚨 Test tomorrow? Let's focus on the essentials:";
+                    actionItems = [
+                        "Review the key formula/concept below",
+                        "Do 3-5 practice problems to test understanding", 
+                        "Focus on the most common question types",
+                        "Don't try to learn everything - master the basics"
+                    ];
+                    break;
+                case 'homework-due':
+                    urgencyMessage = "📝 Homework help - here's your step-by-step approach:";
+                    actionItems = [
+                        "Understand the concept with our explanation",
+                        "Work through the example problems",
+                        "Apply the same steps to your homework",
+                        "Check your work with our practice quiz"
+                    ];
+                    break;
+                case 'quiz-week':
+                    urgencyMessage = "📚 Quiz prep - comprehensive understanding:";
+                    actionItems = [
+                        "Learn the concept thoroughly below",
+                        "Practice with our flashcards",
+                        "Take the practice quiz",
+                        "Review any mistakes until you understand"
+                    ];
+                    break;
+                default:
+                    urgencyMessage = "🎯 Let's break this down clearly:";
+                    actionItems = [
+                        "Start with the real-world context below",
+                        "Follow our step-by-step explanation", 
+                        "Practice with flashcards to reinforce",
+                        "Test yourself with the quiz"
+                    ];
+            }
+            
             let html = `
-                <h3>📅 Your Personalized Study Plan: ${topic.charAt(0).toUpperCase() + topic.slice(1)}</h3>
-                <p><strong>Weekly Time:</strong> ${hours} hours | <strong>Learning Style:</strong> ${style} | <strong>Difficulty:</strong> Adaptive</p>
+                <h3>💡 ${topic.charAt(0).toUpperCase() + topic.slice(1)} Help</h3>
+                ${specific ? `<p><strong>Your specific question:</strong> "${specific}"</p>` : ''}
                 
+                <div style="background: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+                    <h4>${urgencyMessage}</h4>
+                    <ol style="margin: 10px 0 0 20px;">
+                        ${actionItems.map(item => `<li style="margin: 5px 0;">${item}</li>`).join('')}
+                    </ol>
+                </div>
+
                 <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                    <h4>🌟 Why This Matters in Real Life</h4>
+                    <h4>🌟 Why This Actually Matters</h4>
                     <p style="font-size: 1.1em; margin: 10px 0;"><strong>${stories.hook}</strong></p>
                     <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 6px; margin: 10px 0;">
-                        <p><strong>💡 Did you know?</strong> ${stories.stories[Math.floor(Math.random() * stories.stories.length)]}</p>
+                        <p><strong>💡 Real example:</strong> ${stories.stories[Math.floor(Math.random() * stories.stories.length)]}</p>
                     </div>
-                    <details style="margin-top: 15px;">
-                        <summary style="cursor: pointer; font-weight: bold;">🔍 See more amazing applications...</summary>
-                        <div style="margin-top: 10px;">
-                            ${stories.stories.map(story => `<p style="margin: 8px 0; padding-left: 15px; border-left: 2px solid rgba(255,255,255,0.3);">• ${story}</p>`).join('')}
-                        </div>
-                    </details>
                 </div>
 
                 <div class="study-plan">
+                    <h4>📖 Step-by-Step Explanation</h4>
+                    <div class="plan-day">
+                        <h4>Key Concept</h4>
+                        <p>${topicData.plan[0].task}</p>
+                        <small>💡 This is the foundation - make sure you understand this first</small>
+                    </div>
+                    <div class="plan-day">
+                        <h4>How to Apply It</h4>
+                        <p>${topicData.plan[1].task}</p>
+                        <small>🔧 Practice this method until it feels automatic</small>
+                    </div>
+                    <div class="plan-day">
+                        <h4>Common Mistakes to Avoid</h4>
+                        <p>Don't rush through the steps - most errors happen when you skip the basics</p>
+                        <small>⚠️ Take your time with each step</small>
+                    </div>
+                </div>
             `;
             
-            planData.forEach(day => {
-                html += `
-                    <div class="plan-day">
-                        <h4>Day ${day.day}</h4>
-                        <p>${day.task}</p>
-                        <small>⏰ ${day.time} | 🎯 Builds on previous day</small>
-                    </div>
-                `;
-            });
-            
-            html += '</div>';
             container.innerHTML = html;
         }
 
@@ -1564,28 +1593,36 @@ Day 3: Watch Khan Academy video (20 min)
             document.getElementById('checkAnswers').classList.add('hidden');
         }
 
-        function createManualPlan() {
-            const topic = document.getElementById('customTopic').value;
-            const plan = document.getElementById('customPlan').value;
+        function createManualAnswer() {
+            const question = document.getElementById('customQuestion').value;
             
-            if (!topic || !plan) {
-                alert('Please fill in both the topic and your study plan.');
+            if (!question.trim()) {
+                alert('Please enter your math question first.');
                 return;
             }
             
             const container = document.getElementById('studyPlanResults');
             container.innerHTML = `
-                <h3>📝 Your Custom Study Plan: ${topic}</h3>
-                <div class="study-plan">
-                    <div class="plan-day">
-                        <h4>Your Personalized Schedule</h4>
-                        <pre style="white-space: pre-wrap; font-family: inherit; line-height: 1.5;">${plan}</pre>
-                    </div>
+                <h3>💭 Your Question</h3>
+                <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #667eea;">
+                    <p><strong>Question:</strong> "${question}"</p>
+                </div>
+                
+                <div style="background: #e8f5e8; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <h4>💡 AI Response</h4>
+                    <p>Great question! This is the type of specific help our AI will provide when fully launched. For now, here are some immediate resources:</p>
+                    <ul style="margin: 15px 0;">
+                        <li>📹 Try Khan Academy for video explanations</li>
+                        <li>🤖 Use Photomath to scan specific problems</li>
+                        <li>📚 Check your textbook's worked examples</li>
+                        <li>👥 Ask your teacher or study group</li>
+                    </ul>
+                    <p><strong>Coming soon:</strong> Instant AI explanations for questions just like this!</p>
                 </div>
             `;
             
-            document.getElementById('flashcardsResults').innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><h3>🎓 Premium Feature</h3><p>Flashcards available with AI mode or Premium subscription</p><button class="btn btn-premium">Upgrade to Premium</button></div>';
-            document.getElementById('quizResults').innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><h3>🎓 Premium Feature</h3><p>Interactive quizzes available with AI mode or Premium subscription</p><button class="btn btn-premium">Upgrade to Premium</button></div>';
+            document.getElementById('flashcardsResults').innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><h3>🎓 Related Practice</h3><p>Flashcards and practice problems for this topic coming soon!</p></div>';
+            document.getElementById('quizResults').innerHTML = '<div style="text-align: center; padding: 40px; color: #666;"><h3>🎓 Quick Quiz</h3><p>Interactive quizzes to test your understanding coming soon!</p></div>';
             
             document.getElementById('results').classList.remove('hidden');
             document.getElementById('results').scrollIntoView({ behavior: 'smooth' });
