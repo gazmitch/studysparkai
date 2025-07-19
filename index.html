@@ -93,21 +93,29 @@
       font-style: italic;
       min-height: 40px;
     }
+    .study-plan {
+      background-color: #f1f8ff;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 8px;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <h1><i class="fas fa-calculator"></i> StudySparkAI</h1>
     <h2>Master Math with AI</h2>
-    <input type="text" placeholder="Enter a topic e.g., Algebra">
-    <input type="text" placeholder="Study hours per week e.g., 2">
-    <select>
-      <option>Learning Style: Visual</option>
-      <option>Learning Style: Auditory</option>
-      <option>Learning Style: Kinesthetic</option>
+    <input id="topic" type="text" placeholder="Enter a topic e.g., Algebra">
+    <input id="hours" type="text" placeholder="Study hours per week e.g., 2">
+    <select id="style">
+      <option value="Visual">Learning Style: Visual</option>
+      <option value="Auditory">Learning Style: Auditory</option>
+      <option value="Kinesthetic">Learning Style: Kinesthetic</option>
     </select>
-    <input type="text" placeholder="Your Name e.g., Alex">
-    <button>Generate Study Plan</button>
+    <input id="name" type="text" placeholder="Your Name e.g., Alex">
+    <button onclick="generatePlan()">Generate Study Plan</button>
+
+    <div id="studyPlan" class="study-plan"></div>
 
     <div class="dashboard">
       <h2>Your Math Journey</h2>
@@ -141,6 +149,34 @@
         reply = "Pi is approximately 3.14159, and it's used to calculate things like circles' circumference and area.";
       }
       output.innerText = reply;
+    }
+
+    function generatePlan() {
+      const topic = document.getElementById('topic').value;
+      const hours = document.getElementById('hours').value;
+      const style = document.getElementById('style').value;
+      const name = document.getElementById('name').value;
+      const output = document.getElementById('studyPlan');
+
+      if (!topic || !hours || !style || !name) {
+        output.innerHTML = "<p>Please fill out all fields to generate a plan.</p>";
+        return;
+      }
+
+      const plan = `
+        <h3>Hi ${name}, here's your 7-day ${topic} study plan:</h3>
+        <ul>
+          <li>Day 1: Watch a ${style.toLowerCase()} video on ${topic}</li>
+          <li>Day 2: Review notes and take a short quiz</li>
+          <li>Day 3: Practice 5 questions on ${topic}</li>
+          <li>Day 4: Try a challenge problem</li>
+          <li>Day 5: Watch another video and review mistakes</li>
+          <li>Day 6: Practice 10 questions on a sub-topic</li>
+          <li>Day 7: Take a mock test and reflect</li>
+        </ul>
+      `;
+
+      output.innerHTML = plan;
     }
   </script>
 </body>
