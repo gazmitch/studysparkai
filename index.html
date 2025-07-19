@@ -1459,10 +1459,10 @@
                             <p style="font-size: 1.2em; margin-bottom: 20px;"><strong>What is the value of x in: 2x + 3 = 11?</strong></p>
                             
                             <div style="display: grid; gap: 10px; max-width: 400px;">
-                                <button class="answer-btn" onclick="selectAnswer('A', 3)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">A. x = 3</button>
-                                <button class="answer-btn" onclick="selectAnswer('B', 4)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">B. x = 4</button>
-                                <button class="answer-btn" onclick="selectAnswer('C', 5)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">C. x = 5</button>
-                                <button class="answer-btn" onclick="selectAnswer('D', 6)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s;">D. x = 6</button>
+                                <button class="answer-btn" onclick="checkAnswer('A', 3, this)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s; font-size: 16px;">A. x = 3</button>
+                                <button class="answer-btn" onclick="checkAnswer('B', 4, this)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s; font-size: 16px;">B. x = 4</button>
+                                <button class="answer-btn" onclick="checkAnswer('C', 5, this)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s; font-size: 16px;">C. x = 5</button>
+                                <button class="answer-btn" onclick="checkAnswer('D', 6, this)" style="padding: 12px; border: 2px solid #e9ecef; border-radius: 8px; background: white; cursor: pointer; text-align: left; transition: all 0.3s; font-size: 16px;">D. x = 6</button>
                             </div>
                         </div>
                     </div>
@@ -1512,47 +1512,50 @@
             document.getElementById('step2').scrollIntoView({ behavior: 'smooth' });
         }
 
-        function selectAnswer(letter, value) {
-            // Highlight the selected answer
+        function checkAnswer(letter, value, buttonElement) {
+            // Disable all buttons after selection
             const buttons = document.querySelectorAll('.answer-btn');
             buttons.forEach(btn => {
-                btn.style.background = '#f8f9fa';
-                btn.style.border = '2px solid #e9ecef';
+                btn.disabled = true;
+                btn.style.cursor = 'not-allowed';
+                btn.style.opacity = '0.7';
             });
             
-            // Highlight the correct answer (B. x = 4)
+            // Show correct answer (B. x = 4)
             buttons[1].style.background = '#d4edda';
             buttons[1].style.border = '2px solid #28a745';
+            buttons[1].style.opacity = '1';
             
-            // If they selected wrong answer, show it
+            // If they selected wrong answer, highlight it in red
             if (letter !== 'B') {
-                buttons[letter.charCodeAt(0) - 65].style.background = '#f8d7da';
-                buttons[letter.charCodeAt(0) - 65].style.border = '2px solid #dc3545';
+                buttonElement.style.background = '#f8d7da';
+                buttonElement.style.border = '2px solid #dc3545';
+                buttonElement.style.opacity = '1';
             }
             
-            // Show explanation
+            // Show explanation with correct/incorrect message
             let explanationHtml;
             if (value === 4) {
                 explanationHtml = `
-                    <h4 style="color: #28a745;">✅ Excellent! You got it right!</h4>
-                    <p><strong>Here's how we solve 2x + 3 = 11:</strong></p>
-                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace;">
-                        <p>Step 1: 2x + 3 = 11</p>
-                        <p>Step 2: Subtract 3 from both sides → 2x = 8</p>
-                        <p>Step 3: Divide both sides by 2 → x = 4</p>
+                    <h4 style="color: #28a745;">✅ Correct! Excellent work!</h4>
+                    <p><strong>Here's the step-by-step solution:</strong></p>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace; border-left: 4px solid #28a745;">
+                        <p><strong>Step 1:</strong> 2x + 3 = 11</p>
+                        <p><strong>Step 2:</strong> Subtract 3 from both sides → 2x = 8</p>
+                        <p><strong>Step 3:</strong> Divide both sides by 2 → x = 4</p>
                     </div>
-                    <p><strong>The key:</strong> We <em>isolate the variable</em> by reversing the operations!</p>
+                    <p><strong>Key concept:</strong> We <em>isolate the variable</em> by reversing the operations!</p>
                 `;
             } else {
                 explanationHtml = `
                     <h4 style="color: #dc3545;">❌ Not quite! The correct answer is B. x = 4</h4>
-                    <p><strong>No worries - let me show you how:</strong></p>
-                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace;">
-                        <p>Step 1: 2x + 3 = 11</p>
-                        <p>Step 2: Subtract 3 from both sides → 2x = 8</p>
-                        <p>Step 3: Divide both sides by 2 → x = 4</p>
+                    <p><strong>No worries - here's how to solve it:</strong></p>
+                    <div style="background: white; padding: 15px; border-radius: 8px; margin: 15px 0; font-family: monospace; border-left: 4px solid #dc3545;">
+                        <p><strong>Step 1:</strong> 2x + 3 = 11</p>
+                        <p><strong>Step 2:</strong> Subtract 3 from both sides → 2x = 8</p>
+                        <p><strong>Step 3:</strong> Divide both sides by 2 → x = 4</p>
                     </div>
-                    <p><strong>Remember:</strong> To isolate x, we reverse the operations. Since we have +3, we subtract 3. Since we have 2x, we divide by 2.</p>
+                    <p><strong>Remember:</strong> To isolate x, we reverse the operations. Since we have +3, we subtract 3. Since we have 2x (multiply by 2), we divide by 2.</p>
                 `;
             }
             
