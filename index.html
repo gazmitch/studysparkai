@@ -4,62 +4,74 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>StudySparkAI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Inter', sans-serif;
       margin: 0;
       padding: 0;
-      background-color: #f9fafa;
+      background-color: #f4f9fb;
       color: #333;
     }
     header {
       background-color: #1d3557;
       color: white;
-      padding: 1rem;
+      padding: 1.5rem;
       text-align: center;
     }
     .container {
-      padding: 1rem;
-      max-width: 700px;
+      padding: 2rem 1rem;
+      max-width: 720px;
       margin: auto;
+      box-sizing: border-box;
     }
     h2 {
       color: #1d3557;
+      margin-top: 2rem;
     }
     input, select, textarea, button {
       width: 100%;
-      padding: 10px;
-      margin: 8px 0;
+      padding: 12px;
+      margin: 10px 0;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
       box-sizing: border-box;
+      font-size: 1rem;
     }
     button {
-      background-color: #2a9d8f;
+      background-color: #007BFF;
       color: white;
-      border: none;
-      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s ease;
+    }
+    button:hover {
+      background-color: #0056b3;
     }
     .card {
-      background: #e0f7fa;
+      background: white;
       padding: 1rem;
       margin: 1rem 0;
-      border-radius: 8px;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
     }
     .flashcard {
-      background: white;
-      border: 1px solid #ddd;
+      background: #ffffff;
+      border: 1px solid #28a745;
       padding: 1rem;
       margin: 10px 0;
-      border-radius: 5px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+      transition: background 0.2s ease;
+    }
+    .flashcard:hover {
+      background: #e9f9ee;
     }
     .footer {
       text-align: center;
       font-size: 0.9rem;
-      padding: 1rem;
+      padding: 2rem 1rem;
       color: #777;
     }
     .hidden { display: none; }
@@ -94,7 +106,7 @@
       <label for="name">Your Name (optional):</label>
       <input type="text" id="name" placeholder="e.g., Alex">
 
-      <button type="submit">Generate Study Plan</button>
+      <button type="submit" id="generateBtn">Generate Study Plan</button>
     </form>
 
     <div id="output" class="hidden">
@@ -134,6 +146,7 @@
     const plan = document.getElementById('plan');
     const flashcards = document.getElementById('flashcards');
     const quiz = document.getElementById('quiz');
+    const button = document.getElementById('generateBtn');
 
     form.onsubmit = e => {
       e.preventDefault();
@@ -141,47 +154,52 @@
       const hours = document.getElementById('hours').value;
       const style = document.getElementById('style').value;
 
-      plan.innerHTML = `
-        Day 1: Intro video on ${topic} (20 min)<br>
-        Day 2: Practice problems (30 min)<br>
-        Day 3: Visual explanation of key formula (25 min)<br>
-        Day 4: Flashcards review (20 min)<br>
-        Day 5: Short quiz (15 min)<br>
-        Day 6: Application exercises (30 min)<br>
-        Day 7: Summary and self-test (30 min)
-      `;
+      button.innerText = "Generating...";
+      setTimeout(() => {
+        plan.innerHTML = `
+          Day 1: Intro video on ${topic} (20 min)<br>
+          Day 2: Practice problems (30 min)<br>
+          Day 3: Visual explanation of key formula (25 min)<br>
+          Day 4: Flashcards review (20 min)<br>
+          Day 5: Short quiz (15 min)<br>
+          Day 6: Application exercises (30 min)<br>
+          Day 7: Summary and self-test (30 min)
+        `;
 
-      const flashcardTerms = [
-        { term: 'Variable', def: 'A symbol used to represent a number.' },
-        { term: 'Coefficient', def: 'A number that multiplies a variable.' },
-        { term: 'Expression', def: 'A math phrase without an equals sign.' },
-        { term: 'Equation', def: 'A math statement that includes an equals sign.' },
-        { term: 'Factor', def: 'A number that divides another exactly.' }
-      ];
+        const flashcardTerms = [
+          { term: 'Variable', def: 'A symbol used to represent a number.' },
+          { term: 'Coefficient', def: 'A number that multiplies a variable.' },
+          { term: 'Expression', def: 'A math phrase without an equals sign.' },
+          { term: 'Equation', def: 'A math statement that includes an equals sign.' },
+          { term: 'Factor', def: 'A number that divides another exactly.' }
+        ];
 
-      flashcards.innerHTML = '';
-      for (let i = 0; i < flashcardTerms.length; i++) {
-        const { term, def } = flashcardTerms[i];
-        const card = document.createElement('div');
-        card.className = 'flashcard';
-        card.innerText = `${term}`;
-        card.onclick = () => {
-          card.innerText = card.innerText === term ? def : term;
-        };
-        flashcards.appendChild(card);
-      }
+        flashcards.innerHTML = '';
+        for (let i = 0; i < flashcardTerms.length; i++) {
+          const { term, def } = flashcardTerms[i];
+          const card = document.createElement('div');
+          card.className = 'flashcard';
+          card.innerText = `${term}`;
+          card.onclick = () => {
+            card.innerText = card.innerText === term ? def : term;
+          };
+          flashcards.appendChild(card);
+        }
 
-      quiz.innerHTML = `
-        <ol>
-          <li>What is a key formula in ${topic}?<br><em>( ) Option A &nbsp; ( ) Option B &nbsp; ( ) Option C</em></li>
-          <li>Solve: basic ${topic} problem<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
-          <li>What does '${topic}' help you do?<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
-          <li>Choose the correct method:<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
-          <li>Which step comes first?<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
-        </ol>
-      `;
+        quiz.innerHTML = `
+          <ol>
+            <li>What is a key formula in ${topic}?<br><em>( ) Option A &nbsp; ( ) Option B &nbsp; ( ) Option C</em></li>
+            <li>Solve: basic ${topic} problem<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+            <li>What does '${topic}' help you do?<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+            <li>Choose the correct method:<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+            <li>Which step comes first?<br><em>( ) A &nbsp; ( ) B &nbsp; ( ) C</em></li>
+          </ol>
+        `;
 
-      output.classList.remove('hidden');
+        output.classList.remove('hidden');
+        button.innerText = "Generate Study Plan";
+        output.scrollIntoView({ behavior: "smooth" });
+      }, 500);
     };
 
     function copyPlan() {
