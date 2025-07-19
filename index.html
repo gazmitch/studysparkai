@@ -99,6 +99,15 @@
       margin-top: 20px;
       border-radius: 8px;
     }
+    .reflect-button {
+      margin-top: 20px;
+      background-color: #ffc107;
+      color: #333;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
@@ -121,7 +130,7 @@
       <h2>Your Math Journey</h2>
       <div class="progress" style="width: 70%;">70% Complete</div>
       <div class="quick-win">
-        <iframe src="https://www.youtube.com/embed/kO3OBGBrw1I" title="Quick Win: Solving Quadratics"></iframe>
+        <iframe id="videoFrame" src="https://www.youtube.com/embed/kO3OBGBrw1I" title="Quick Win"></iframe>
       </div>
       <div class="chat">
         <input id="chatInput" placeholder="Ask a math question...">
@@ -133,6 +142,7 @@
         <li>📘 Day 2: Practice Problems <input type="checkbox"></li>
         <li>📝 Day 3: Take Quiz <input type="checkbox"></li>
       </ul>
+      <button class="reflect-button" onclick="alert('Nice work! What was the hardest part?')">Reflect on Your Week</button>
     </div>
   </div>
 
@@ -157,6 +167,7 @@
       const style = document.getElementById('style').value;
       const name = document.getElementById('name').value;
       const output = document.getElementById('studyPlan');
+      const videoFrame = document.getElementById('videoFrame');
 
       if (!topic || !hours || !style || !name) {
         output.innerHTML = "<p>Please fill out all fields to generate a plan.</p>";
@@ -177,6 +188,16 @@
       `;
 
       output.innerHTML = plan;
+
+      if (topic.toLowerCase().includes("trig")) {
+        videoFrame.src = "https://www.youtube.com/embed/0mCFgC6wX4U";
+      } else if (topic.toLowerCase().includes("algebra")) {
+        videoFrame.src = "https://www.youtube.com/embed/kO3OBGBrw1I";
+      } else if (topic.toLowerCase().includes("calculus")) {
+        videoFrame.src = "https://www.youtube.com/embed/WUvTyaaNkzM";
+      } else {
+        videoFrame.src = "https://www.youtube.com/embed/kO3OBGBrw1I";
+      }
     }
   </script>
 </body>
